@@ -62,6 +62,26 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
+
+  assets:
+    - assets/img/ParKiApp_logo.png
+    - assets/img/jeff-bezos.jpg
+    - assets/img/jhonatan_mejias.jpg
+
+  fonts:
+    - family: Lato
+      fonts:
+        - asset: assets/fonts/Lato-Regular.ttf
+
+
+
+
+
+
+
+
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
