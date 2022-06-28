@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'ui/pages/login/login.dart';
+import 'ui/pages/login_main/login_main.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Pay Parking'),
-        ),
-        body: Center(
-          child: Login(),
-        ),
-      ),
+      home: Scaffold(body: Center(child: Login())),
     );
   }
 }

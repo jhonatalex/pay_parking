@@ -8,14 +8,17 @@ class GradientBack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250.0,
+      height: double.infinity,
       width: double.infinity,
       decoration: const BoxDecoration(
           gradient: LinearGradient(
-              colors: [Color(0xFF2196f3), Color.fromARGB(255, 231, 231, 233)],
-              begin: FractionalOffset(0.2, 0.0),
-              end: FractionalOffset(1, 0.8),
-              stops: [0.0, 0.6],
+              colors: [
+                Color.fromARGB(255, 231, 231, 233),
+                Color(0xFF2196f3),
+              ],
+              begin: FractionalOffset.center,
+              end: FractionalOffset.bottomCenter,
+              stops: [0.2, 0.5],
               tileMode: TileMode.clamp)),
       child: Text(
         title,
@@ -25,7 +28,7 @@ class GradientBack extends StatelessWidget {
             fontFamily: "Lato",
             fontWeight: FontWeight.bold),
       ),
-      alignment: Alignment(-0.9, -0.6),
+      alignment: Alignment(-0.2, -0.8),
     );
   }
 }

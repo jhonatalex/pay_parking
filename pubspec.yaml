@@ -64,9 +64,11 @@ flutter:
 
 
   assets:
+    - assets/img/fondo-home.jpg
+    - assets/img/Park-logo.jpg
+    - assets/img/logo.png
     - assets/img/ParKiApp_logo.png
-    - assets/img/jeff-bezos.jpg
-    - assets/img/jhonatan_mejias.jpg
+
 
   fonts:
     - family: Lato
