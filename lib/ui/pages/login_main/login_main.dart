@@ -23,23 +23,21 @@ class LoginMain extends StatelessWidget {
     final logo_rss = Container(
         padding: EdgeInsets.only(top: 8.0),
         width: 150,
-        child: Row(
-          children: [
-            Container(
-              margin: EdgeInsets.only(right: 10.0),
-              width: 40.0,
-              height: 38.0,
-              color: Color.fromARGB(255, 80, 80, 80),
-              child: IconButton(
-                color: Colors.white,
-                icon: Icon(FontAwesomeIcons.google),
-                onPressed: () {},
-              ),
+        child: Row(children: [
+          Container(
+            width: 37,
+            height: 37,
+            margin: EdgeInsets.only(right: 10.0),
+            color: Color.fromARGB(255, 80, 80, 80),
+            child: IconButton(
+              color: Colors.white,
+              icon: Icon(FontAwesomeIcons.google),
+              onPressed: () {},
             ),
-            SignInButton(Buttons.Facebook, mini: true, onPressed: () {}),
-            SignInButton(Buttons.Email, mini: true, onPressed: () {})
-          ],
-        ));
+          ),
+          SignInButton(Buttons.Facebook, mini: true, onPressed: () {}),
+          SignInButton(Buttons.Email, mini: true, onPressed: () {})
+        ]));
 
     final card_login = Center(
         child: Stack(
@@ -54,6 +52,15 @@ class LoginMain extends StatelessWidget {
                   logo,
                   ButtonWithBackground("Ingresar"),
                   ButtonLessBackground("Crear Cuenta"),
+                  Container(
+                    margin: EdgeInsets.only(top: 15.0),
+                    child: const Text("___________ O ingrese con __________",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14.0,
+                            fontFamily: "Lato",
+                            fontWeight: FontWeight.bold)),
+                  ),
                   logo_rss
                 ]),
           ),
