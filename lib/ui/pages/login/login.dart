@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/ui/widgets/Background.dart';
 import 'package:pay_parking/ui/widgets/input_with_icons_less_background.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
 import 'package:pay_parking/ui/widgets/button_with_background.dart';
@@ -28,10 +29,10 @@ class Login1 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 logo,
-                Input1IconLessBackground(
-                    Icon(Icons.email), "Correo Electrónico"),
-                Input2IconsLessBackground(Icon(Icons.lock_outline),
-                    "Contraseña", Icon(Icons.visibility_off)),
+                EmailField("Correo Electrónico"),
+                SizedBox(),
+                PasswordField("Contraseña"),
+                SizedBox(),
                 ButtonWithBackground("Ingresar"),
                 Divider(
                   height: 30,
@@ -41,14 +42,14 @@ class Login1 extends StatelessWidget {
                   color: Colors.black,
                 ),
                 TextButton(
-                    onPressed: () {}, child: Text("Olvidó su contraseña"))
+                    onPressed: () {}, child: Text("Olvidó su contraseña")),
               ]),
         )
       ],
     ));
 
     return Stack(
-      children: [GradientBack(""), card_login],
+      children: [BackgroundImagen("assets/img/ParKiApp_logo.png"), card_login],
     );
   }
 }
