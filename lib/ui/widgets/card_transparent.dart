@@ -8,7 +8,7 @@ class CardContainer extends StatelessWidget {
     return Center(
       child: Container(
           alignment: Alignment(-0.2, -0.8),
-          height: 520,
+          height: 540,
           width: 320,
           decoration: const BoxDecoration(
               color: Color.fromARGB(111, 247, 247, 247),

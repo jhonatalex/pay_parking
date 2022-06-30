@@ -3,9 +3,11 @@ import 'package:pay_parking/ui/widgets/button_less_background.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
 import '../../widgets/button_with_background.dart';
 import '../../widgets/gradient_back.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginMain extends StatelessWidget {
+  const LoginMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +20,44 @@ class Login extends StatelessWidget {
           image: AssetImage("assets/img/ParKiApp_logo.png"),
         )));
 
+    final logo_rss = Container(
+        padding: EdgeInsets.only(top: 8.0),
+        width: 150,
+        child: Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(right: 10.0),
+              width: 40.0,
+              height: 38.0,
+              color: Color.fromARGB(255, 80, 80, 80),
+              child: IconButton(
+                color: Colors.white,
+                icon: Icon(FontAwesomeIcons.google),
+                onPressed: () {},
+              ),
+            ),
+            SignInButton(Buttons.Facebook, mini: true, onPressed: () {}),
+            SignInButton(Buttons.Email, mini: true, onPressed: () {})
+          ],
+        ));
+
     final card_login = Center(
         child: Stack(
       children: [
         CardContainer(),
-        Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              logo,
-              ButtonWithBackground("Ingresar"),
-              ButtonLessBackground("Crear Cuenta")
-            ])
+        Container(
+          margin: const EdgeInsets.only(top: 50.0),
+          child: Center(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  logo,
+                  ButtonWithBackground("Ingresar"),
+                  ButtonLessBackground("Crear Cuenta"),
+                  logo_rss
+                ]),
+          ),
+        )
       ],
     ));
 
