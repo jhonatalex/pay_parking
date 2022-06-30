@@ -8,7 +8,7 @@ class ButtonWithBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(top: 30.0),
+        margin: const EdgeInsets.only(top: 20.0),
         width: 220.0,
         height: 50.0,
         decoration: BoxDecoration(
