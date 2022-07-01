@@ -69,8 +69,8 @@ final GradientRed = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
   colors: [
-    Color.fromARGB(255, 214, 139, 26),
     Color.fromARGB(255, 212, 38, 38),
+    Color.fromARGB(255, 214, 139, 26),
   ],
 );
 final GradientPink = LinearGradient(

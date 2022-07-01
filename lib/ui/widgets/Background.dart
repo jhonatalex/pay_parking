@@ -23,7 +23,7 @@ class Background extends StatelessWidget {
 }
 
 class BackgroundImagen extends StatelessWidget {
-  String pathImage = "assets/img/ParKiApp_logo.png";
+  String pathImage = "assets/img/fondo-home.jpg";
   BackgroundImagen(this.pathImage);
   @override
   Widget build(BuildContext context) {

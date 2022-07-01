@@ -56,7 +56,7 @@ class home extends StatelessWidget {
                     height: 25,
                     child: CircleAvatar(
                         backgroundImage:
-                            AssetImage("assets/img/ParKiApp_logo.png")),
+                            AssetImage("assets/img/jhonatan_mejias.jpg")),
                   )
                 ])
               ]),
@@ -90,7 +90,7 @@ class home extends StatelessWidget {
             boxShadow: [ShadowBlueDown]),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Image.asset(
-            "assets/img/ParKiApp_logo.png",
+            "assets/img/bancamiga_logo.png",
             height: 40,
           ),
           doSpace20,
