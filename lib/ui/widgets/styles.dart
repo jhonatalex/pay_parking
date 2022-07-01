@@ -42,3 +42,58 @@ class GradientBack extends StatelessWidget {
             )));
   }
 }
+
+//LISTADO DE SOMBRAS
+final ShadowBlack = BoxShadow(
+  color: Colors.black,
+  blurStyle: BlurStyle.normal,
+  offset: Offset(-3.0, 2.0),
+  blurRadius: 5,
+);
+final ShadowBlueDown = BoxShadow(
+  color: Colors.blue,
+  blurStyle: BlurStyle.normal,
+  offset: Offset(0.0, 5.0),
+  blurRadius: 5,
+);
+//LISTADO DE GRADIENTES
+final GradientPurple = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: [
+    Color(0xff426bd3),
+    Color(0xff5d4bd1),
+  ],
+);
+final GradientRed = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: [
+    Color.fromARGB(255, 214, 139, 26),
+    Color.fromARGB(255, 212, 38, 38),
+  ],
+);
+final GradientPink = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: [
+    Color.fromARGB(255, 107, 26, 214),
+    Color.fromARGB(255, 212, 38, 189),
+  ],
+);
+final GradientGreen = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: [
+    Color.fromARGB(255, 15, 163, 47),
+    Color.fromARGB(255, 98, 240, 16),
+  ],
+);
+final GradientBlue = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: [
+    Color.fromARGB(255, 15, 67, 163),
+    Color.fromARGB(255, 28, 192, 238),
+  ],
+);

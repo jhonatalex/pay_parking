@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/ui/widgets/styles.dart';
 
 class ButtonBlueWithIcon extends StatelessWidget {
   String textButton = "";
   IconData iconButton = Icons.bluetooth_audio;
+  var gradientColor = GradientRed;
+  var colorBorder = Colors.pink;
 
-  ButtonBlueWithIcon(this.iconButton, this.textButton);
+  ButtonBlueWithIcon(
+      this.iconButton, this.textButton, this.gradientColor, this.colorBorder);
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +16,16 @@ class ButtonBlueWithIcon extends StatelessWidget {
       height: 54.0,
       width: 60.0,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15.0),
-        color: Color(0xFF2196f3),
-        /*gradient: LinearGradient(
-            colors: [
-              Color(0xff426bd3),
-              Color(0xff5d4bd1),
-            ],
-          )*/
-      ),
+          borderRadius: BorderRadius.circular(5.0),
+          boxShadow: [
+            BoxShadow(
+              color: colorBorder,
+              blurStyle: BlurStyle.normal,
+              offset: Offset(-3.0, 2.0),
+              blurRadius: 5,
+            )
+          ],
+          gradient: gradientColor),
       child: Icon(iconButton, color: Colors.black, size: 30.0),
     );
 
@@ -32,7 +37,7 @@ class ButtonBlueWithIcon extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
           border: Border.all(
-              color: Color(0xFF2196f3), width: 2.0, style: BorderStyle.solid),
+              color: colorBorder, width: 2.0, style: BorderStyle.solid),
           color: Color.fromARGB(76, 250, 250, 250)),
       child: Center(
         child: TextButton(

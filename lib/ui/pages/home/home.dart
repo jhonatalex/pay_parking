@@ -13,22 +13,9 @@ class home extends StatelessWidget {
         height: 50,
         width: 280,
         decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.red,
-                offset: Offset(0.0, 20.0),
-                blurRadius: 10.0,
-                spreadRadius: 2.0,
-              ),
-              BoxShadow(
-                color: Colors.white,
-                offset: Offset(0.0, 0.0),
-                blurRadius: 0.0,
-                spreadRadius: 0.0,
-              )
-            ]),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(5.0),
+        ),
         child: Center(
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,10 +65,14 @@ class home extends StatelessWidget {
     final funtions = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ButtonBlueWithIcon(Icons.bluetooth, "ABRIR BARRERA"),
-        ButtonBlueWithIcon(Icons.local_parking, "ABRIR BARRERA"),
-        ButtonBlueWithIcon(Icons.monetization_on, "RECARGA"),
-        ButtonBlueWithIcon(Icons.account_balance_wallet, "BILLETERA"),
+        ButtonBlueWithIcon(
+            Icons.bluetooth, "ABRIR BARRERA", GradientPink, Colors.pink),
+        ButtonBlueWithIcon(
+            Icons.local_parking, "ABRIR BARRERA", GradientGreen, Colors.green),
+        ButtonBlueWithIcon(
+            Icons.monetization_on, "RECARGA", GradientRed, Colors.red),
+        ButtonBlueWithIcon(Icons.account_balance_wallet, "BILLETERA",
+            GradientBlue, Colors.blue),
       ],
     );
 
@@ -92,13 +83,11 @@ class home extends StatelessWidget {
         padding: EdgeInsets.only(top: 10, left: 20),
         decoration: BoxDecoration(
             color: Colors.green,
+            gradient: GradientBlue,
             //image: DecorationImage(fit: BoxFit.cover, image: AssetImage(pathImage)),
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
             //shape: BoxShape.rectangle,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.red, offset: Offset(0.0, 5.0), blurRadius: 5.0)
-            ]),
+            boxShadow: [ShadowBlueDown]),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Image.asset(
             "assets/img/ParKiApp_logo.png",
