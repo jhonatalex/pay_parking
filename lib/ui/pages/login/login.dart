@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/ui/widgets/background.dart';
+import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 import 'package:pay_parking/ui/widgets/input_with_icons_less_background.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
 import 'package:pay_parking/ui/widgets/button_with_background.dart';
 import 'package:pay_parking/ui/widgets/gradient_back.dart';
 
-class Login1 extends StatelessWidget {
-  const Login1({Key? key}) : super(key: key);
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +30,12 @@ class Login1 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 logo,
-                Input1IconLessBackground(
-                    Icon(Icons.email), "Correo Electrónico"),
-                Input2IconsLessBackground(Icon(Icons.lock_outline),
-                    "Contraseña", Icon(Icons.visibility_off)),
+                //ButtonBlueWithIcon(Icons.bluetooth_audio, "ABRIR BARRERA"),
+
+                EmailField("Correo Electrónico"),
+                SizedBox(),
+                PasswordField("Contraseña"),
+                SizedBox(),
                 ButtonWithBackground("Ingresar"),
                 Divider(
                   height: 30,
@@ -41,14 +45,16 @@ class Login1 extends StatelessWidget {
                   color: Colors.black,
                 ),
                 TextButton(
-                    onPressed: () {}, child: Text("Olvidó su contraseña"))
+                    onPressed: () {},
+                    child: Text("Olvidó su contraseña",
+                        style: TextStyle(color: Colors.black))),
               ]),
         )
       ],
     ));
 
     return Stack(
-      children: [GradientBack(""), card_login],
+      children: [Background(), card_login],
     );
   }
 }
