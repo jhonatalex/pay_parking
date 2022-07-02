@@ -48,9 +48,10 @@ class LoginMain extends StatelessWidget {
           margin: const EdgeInsets.only(top: 50.0),
           child: Center(
             child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  logo,
+                  Flexible(child: logo),
                   ButtonWithBackground("Ingresar"),
                   ButtonLessBackground("Crear Cuenta"),
                   Container(
@@ -70,7 +71,7 @@ class LoginMain extends StatelessWidget {
     ));
 
     return Stack(
-      children: [GradientBack("Login"), card_login],
+      children: [GradientBack(), card_login],
     );
   }
 }
