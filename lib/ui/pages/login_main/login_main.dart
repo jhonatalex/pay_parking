@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/ui/widgets/Background.dart';
 import 'package:pay_parking/ui/widgets/button_less_background.dart';
 import 'package:pay_parking/ui/widgets/button_with_background.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
@@ -71,7 +72,7 @@ class LoginMain extends StatelessWidget {
     ));
 
     return Stack(
-      children: [GradientBack(), card_login],
+      children: [Background(), card_login],
     );
   }
 }

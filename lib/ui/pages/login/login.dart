@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/widgets/background.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
-import 'package:pay_parking/ui/widgets/input_with_icons_less_background.dart';
+
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
 import 'package:pay_parking/ui/widgets/button_with_background.dart';
-import 'package:pay_parking/ui/widgets/gradient_back.dart';
+
+import '../../widgets/input_email_field.dart';
+import '../../widgets/input_password_field.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -31,7 +33,6 @@ class Login extends StatelessWidget {
               children: <Widget>[
                 logo,
                 //ButtonBlueWithIcon(Icons.bluetooth_audio, "ABRIR BARRERA"),
-
                 EmailField("Correo Electrónico"),
                 SizedBox(),
                 PasswordField("Contraseña"),
