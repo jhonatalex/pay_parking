@@ -22,17 +22,10 @@ class EmailField extends StatelessWidget {
       child: TextFormField(
         restorationId: 'email_field',
         decoration: InputDecoration(
-          border: InputBorder.none,
-          hintStyle: const TextStyle(
-              fontFamily: "Lato",
-              fontSize: 18.0,
-              color: Colors.black,
-              fontWeight: FontWeight.bold),
-          //filled: true,
-          icon: const Icon(Icons.email),
-          //hintText: "",
-          labelText: textButton,
-        ),
+            border: InputBorder.none,
+            filled: false,
+            icon: const Icon(Icons.email),
+            label: Text(textButton)),
       ),
     );
     ;

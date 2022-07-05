@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/pages/home/home.dart';
+import 'package:pay_parking/ui/widgets/drawer_items.dart';
 
 import 'ui/pages/login/login.dart';
 import 'ui/pages/login_main/login_main.dart';
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false, //Quitar el banner demo
-      home: Scaffold(body: Center(child: Login())),
+      home: Scaffold(body: Center(child: Home())),
     );
   }
 }

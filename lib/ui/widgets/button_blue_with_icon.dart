@@ -16,11 +16,11 @@ class ButtonBlueWithIcon extends StatelessWidget {
       height: 54.0,
       width: 60.0,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5.0),
+          borderRadius: BorderRadius.circular(10.0),
           boxShadow: [
             BoxShadow(
               color: colorBorder,
-              blurStyle: BlurStyle.normal,
+              blurStyle: BlurStyle.inner,
               offset: Offset(-3.0, 2.0),
               blurRadius: 5,
             )
@@ -37,7 +37,7 @@ class ButtonBlueWithIcon extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
           border: Border.all(
-              color: colorBorder, width: 2.0, style: BorderStyle.solid),
+              color: colorBorder, width: 4.0, style: BorderStyle.solid),
           color: Color.fromARGB(76, 250, 250, 250)),
       child: Center(
         child: TextButton(
