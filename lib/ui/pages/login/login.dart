@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/ui/pages/home/home.dart';
 import 'package:pay_parking/ui/widgets/background.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 
@@ -31,15 +32,18 @@ class Login extends StatelessWidget {
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                logo,
+                Flexible(
+                  fit: FlexFit.tight,
+                  child: logo,
+                ),
                 //ButtonBlueWithIcon(Icons.bluetooth_audio, "ABRIR BARRERA"),
                 EmailField("Correo Electrónico"),
                 SizedBox(),
                 PasswordField("Contraseña"),
                 SizedBox(),
-                ButtonWithBackground("Ingresar"),
+                ButtonWithBackground("Ingresar", Home()),
                 Divider(
-                  height: 30,
+                  height: 15,
                   thickness: 1,
                   indent: 130,
                   endIndent: 130,
@@ -47,15 +51,16 @@ class Login extends StatelessWidget {
                 ),
                 TextButton(
                     onPressed: () {},
-                    child: Text("Olvidó su contraseña",
+                    child: Text("Olvidó su contraseña ",
                         style: TextStyle(color: Colors.black))),
               ]),
         )
       ],
     ));
 
-    return Stack(
+    return Material(
+        child: Stack(
       children: [Background(), card_login],
-    );
+    ));
   }
 }

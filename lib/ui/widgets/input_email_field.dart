@@ -19,13 +19,13 @@ class EmailField extends StatelessWidget {
           border: Border.all(
               color: Color(0xFFFFDF40), width: 2.0, style: BorderStyle.solid),
           color: Color.fromARGB(76, 250, 250, 250)),
-      child: TextFormField(
+      child: TextField(
         restorationId: 'email_field',
         decoration: InputDecoration(
             border: InputBorder.none,
             filled: false,
             icon: const Icon(Icons.email),
-            label: Text(textButton)),
+            hintText: "Correo Electronico"),
       ),
     );
     ;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/ui/pages/login/login.dart';
 import 'package:pay_parking/ui/widgets/Background.dart';
 import 'package:pay_parking/ui/widgets/button_less_background.dart';
 import 'package:pay_parking/ui/widgets/button_with_background.dart';
@@ -7,6 +8,8 @@ import '../../widgets/button_with_background.dart';
 import '../../widgets/gradient_back.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../register/register.dart';
 
 class LoginMain extends StatelessWidget {
   const LoginMain({Key? key}) : super(key: key);
@@ -53,8 +56,8 @@ class LoginMain extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Flexible(child: logo),
-                  ButtonWithBackground("Ingresar"),
-                  ButtonLessBackground("Crear Cuenta"),
+                  ButtonWithBackground("Ingresar", Login()),
+                  ButtonLessBackground("Crear Cuenta", Register()),
                   Container(
                     margin: EdgeInsets.only(top: 15.0),
                     child: const Text("___________ O ingrese con __________",

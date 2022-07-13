@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class ButtonWithBackground extends StatelessWidget {
   String textButton = "";
+  Widget page;
 
-  ButtonWithBackground(this.textButton);
+  ButtonWithBackground(this.textButton, this.page);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,8 @@ class ButtonWithBackground extends StatelessWidget {
         child: Center(
           child: TextButton(
               onPressed: () {
-                print("Button pressed");
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => page));
               },
               child: Center(
                 child: Text(textButton,

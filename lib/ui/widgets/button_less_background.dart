@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class ButtonLessBackground extends StatelessWidget {
   String textButton = "";
+  Widget page;
 
-  ButtonLessBackground(this.textButton);
+  ButtonLessBackground(this.textButton, this.page);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,8 @@ class ButtonLessBackground extends StatelessWidget {
         child: Center(
           child: TextButton(
               onPressed: () {
-                print("Button pressed");
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => page));
               },
               child: Center(
                 child: Text(textButton,
