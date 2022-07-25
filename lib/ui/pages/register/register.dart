@@ -27,7 +27,6 @@ class Register extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Flexible(
-                  fit: FlexFit.tight,
                   child: logo,
                 ),
                 Divider(

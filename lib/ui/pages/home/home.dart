@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/ui/pages/open_barrier/open_barrier.dart';
 import 'package:pay_parking/ui/widgets/background.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
@@ -15,13 +16,14 @@ class Home extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ButtonBlueWithIcon(
-            Icons.bluetooth, "ABRIR BARRERA", GradientBlue, Colors.blue),
+            Icons.bluetooth, "ABRIR BARRERA", const OpenBarrier()),
         ButtonBlueWithIcon(
-            Icons.local_parking, "ABRIR BARRERA", GradientBlue, Colors.blue),
+            Icons.local_parking, "ESTACIONAMIENTOS", OpenBarrier()),
+        /*
         ButtonBlueWithIcon(
             Icons.monetization_on, "RECARGA", GradientBlue, Colors.blue),
         ButtonBlueWithIcon(Icons.account_balance_wallet, "BILLETERA",
-            GradientBlue, Colors.blue),
+            GradientBlue, Colors.blue),*/
       ],
     );
 

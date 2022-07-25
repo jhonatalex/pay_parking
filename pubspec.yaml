@@ -73,7 +73,8 @@ flutter:
     - assets/img/ParKiApp_logo.png
     - assets/img/jhonatan_mejias.jpg
     - assets/img/bancamiga_logo.png
-
+    - assets/img/barrera_only.png
+    - assets/img/DNA.gif
 
   fonts:
     - family: Lato
