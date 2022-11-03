@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "590778202045",
+    "project_id": "payparking-fcfcb",
+    "storage_bucket": "payparking-fcfcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590778202045:android:c56a4241986395b28ac4d4",
+        "android_client_info": {
+          "package_name": "com.example.pay_parking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590778202045-sp02bpkt8l2cn4hqbdf8n42ojk55e9dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5YgKMCafXzm6jXW7I5obOQ6WC--e-hU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590778202045-sp02bpkt8l2cn4hqbdf8n42ojk55e9dm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

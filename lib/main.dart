@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/pages/home/home.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
@@ -5,7 +6,10 @@ import 'package:pay_parking/ui/widgets/drawer_items.dart';
 import 'ui/pages/login/login.dart';
 import 'ui/pages/login_main/login_main.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
