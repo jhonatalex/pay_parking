@@ -9,18 +9,19 @@ class shadowStyle extends StatelessWidget {
   }
 }
 
-final doSpace20 = SizedBox(
+const doSpace20 = SizedBox(
   height: 20,
   width: 20,
 );
 
-final doSpace10 = SizedBox(
+const doSpace10 = SizedBox(
   height: 10,
   width: 10,
 );
 
+// ignore: must_be_immutable
 class GradientBack extends StatelessWidget {
-  var color1 = Color(0xff426bd3);
+  var color1 = const Color(0xff426bd3);
   var color2 = Color(0xff5d4bd1);
   int radius = 10;
   GradientBack(this.color1, this.color2, this.radius);
