@@ -57,7 +57,7 @@ class OpenBarrier extends StatelessWidget {
         imageBarrier,
         imageBluetooh,
         textOpen,
-        ButtonWithBackground("Entrar", Home())
+        //ButtonWithBackground("Entrar", Home())
       ])),
       drawer: Drawer(
         child: DrawerItems(),

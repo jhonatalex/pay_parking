@@ -3,16 +3,12 @@ import 'dart:js_util';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class ButtonWithBackground extends StatelessWidget {
+class ButtonWithBackground2 extends StatelessWidget {
   String textButton = "";
   Widget page;
-  TextEditingController email_user;
-  TextEditingController password_user;
 
-  ButtonWithBackground(
+  ButtonWithBackground2(
     this.textButton,
-    this.email_user,
-    this.password_user,
     this.page,
   );
 
@@ -28,10 +24,10 @@ class ButtonWithBackground extends StatelessWidget {
         child: Center(
           child: TextButton(
               onPressed: () {
-                singIn();
+                //singIn();
 
-                /* Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => page));*/
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => page));
               },
               child: Center(
                 child: Text(textButton,
@@ -42,10 +38,5 @@ class ButtonWithBackground extends StatelessWidget {
                         fontWeight: FontWeight.bold)),
               )),
         ));
-  }
-
-  Future singIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email_user.text.trim(), password: password_user.text.trim());
   }
 }

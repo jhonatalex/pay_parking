@@ -6,11 +6,28 @@ import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
 import 'package:pay_parking/ui/widgets/button_with_background.dart';
 
+import '../../widgets/button_sing_in.dart';
 import '../../widgets/input_email_field.dart';
 import '../../widgets/input_password_field.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Limpia el controlador cuando el Widget se descarte
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +53,17 @@ class Login extends StatelessWidget {
                   fit: FlexFit.tight,
                   child: logo,
                 ),
-                //ButtonBlueWithIcon(Icons.bluetooth_audio, "ABRIR BARRERA"),
-                EmailField("Correo Electrónico"),
+
+                //BOTONES
+                // CAMPO DE EMAIL
+                EmailField("Correo Electrónico", emailController),
                 SizedBox(),
-                PasswordField("Contraseña"),
+                //CAMPO DE CONTRASEÑA
+                PasswordField("Contraseña", passwordController),
                 SizedBox(),
-                ButtonWithBackground("Ingresar", Home()),
+                //BOTON DE
+                ButtonSingIn(
+                    "Ingresar", emailController, passwordController, Home()),
                 Divider(
                   height: 15,
                   thickness: 1,

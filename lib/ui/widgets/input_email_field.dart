@@ -3,8 +3,9 @@ import 'package:pay_parking/ui/widgets/styles.dart';
 
 class EmailField extends StatelessWidget {
   String textButton = "";
+  TextEditingController emailController;
 
-  EmailField(this.textButton);
+  EmailField(this.textButton, this.emailController);
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class EmailField extends StatelessWidget {
               color: Color(0xFFFFDF40), width: 2.0, style: BorderStyle.solid),
           color: Color.fromARGB(76, 250, 250, 250)),
       child: TextField(
+        controller: emailController,
         restorationId: 'email_field',
         decoration: InputDecoration(
             border: InputBorder.none,

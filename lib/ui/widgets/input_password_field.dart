@@ -3,8 +3,9 @@ import 'package:pay_parking/ui/widgets/styles.dart';
 
 class PasswordField extends StatelessWidget {
   String textButton = "";
+  TextEditingController passwordController;
 
-  PasswordField(this.textButton);
+  PasswordField(this.textButton, this.passwordController);
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +20,7 @@ class PasswordField extends StatelessWidget {
                 color: Color(0xFFFFDF40), width: 2.0, style: BorderStyle.solid),
             color: Color.fromARGB(76, 250, 250, 250)),
         child: TextFormField(
+          controller: passwordController,
           obscureText: true,
           //maxLength: 8,
           decoration: InputDecoration(
