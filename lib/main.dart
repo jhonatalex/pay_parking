@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false, //Quitar el banner demo
-      home: Scaffold(body: Center(child: LoginMain())),
+      home: Scaffold(body: Center(child: Home())),
     );
   }
 }
