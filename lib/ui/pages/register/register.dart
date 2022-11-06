@@ -50,6 +50,19 @@ class _RegisterState extends State<Register> {
                 Flexible(
                   child: logo,
                 ),
+                SizedBox(
+                  height: 10,
+                ),
+                const Text("Bienvenido",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30)),
+                const Text("Rellena el formulario para crear tu cuenta",
+                    style: TextStyle(color: Colors.black, fontSize: 14)),
+                SizedBox(
+                  height: 10,
+                ),
                 //BOTONES
                 // CAMPO DE EMAIL
                 EmailField("Correo Electrónico", emailController),
