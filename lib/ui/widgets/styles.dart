@@ -1,7 +1,9 @@
+// ignore_for_file: camel_case_types, constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 class shadowStyle extends StatelessWidget {
-  shadowStyle();
+  const shadowStyle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +24,15 @@ const doSpace10 = SizedBox(
 // ignore: must_be_immutable
 class GradientBack extends StatelessWidget {
   var color1 = const Color(0xff426bd3);
-  var color2 = Color(0xff5d4bd1);
+  var color2 = const Color(0xff5d4bd1);
   int radius = 10;
-  GradientBack(this.color1, this.color2, this.radius);
+  GradientBack(this.color1, this.color2, this.radius, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
             gradient: LinearGradient(
               colors: [
@@ -45,20 +48,20 @@ class GradientBack extends StatelessWidget {
 }
 
 //LISTADO DE SOMBRAS
-final ShadowBlack = BoxShadow(
+const ShadowBlack = BoxShadow(
   color: Colors.black,
   blurStyle: BlurStyle.inner,
   offset: Offset(-3.0, 2.0),
   blurRadius: 5,
 );
-final ShadowBlueDown = BoxShadow(
+const ShadowBlueDown = BoxShadow(
   color: Colors.blue,
   blurStyle: BlurStyle.inner,
   offset: Offset(0.0, 5.0),
   blurRadius: 5,
 );
 //LISTADO DE GRADIENTES
-final GradientPurple = LinearGradient(
+const GradientPurple = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
   colors: [
@@ -66,7 +69,7 @@ final GradientPurple = LinearGradient(
     Color(0xff5d4bd1),
   ],
 );
-final GradientRed = LinearGradient(
+const GradientRed = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
   colors: [
@@ -74,7 +77,7 @@ final GradientRed = LinearGradient(
     Color.fromARGB(255, 214, 139, 26),
   ],
 );
-final GradientPink = LinearGradient(
+const GradientPink = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
   colors: [
@@ -82,7 +85,7 @@ final GradientPink = LinearGradient(
     Color.fromARGB(255, 212, 38, 189),
   ],
 );
-final GradientGreen = LinearGradient(
+const GradientGreen = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
   colors: [
@@ -90,7 +93,7 @@ final GradientGreen = LinearGradient(
     Color.fromARGB(255, 98, 240, 16),
   ],
 );
-final GradientBlue = LinearGradient(
+const GradientBlue = LinearGradient(
   begin: Alignment.topRight,
   end: Alignment.bottomLeft,
   colors: [

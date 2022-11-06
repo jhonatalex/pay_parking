@@ -7,7 +7,7 @@ class CardContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-          alignment: Alignment(-0.2, -0.8),
+          alignment: const Alignment(-0.2, -0.8),
           height: 540,
           width: 320,
           decoration: const BoxDecoration(

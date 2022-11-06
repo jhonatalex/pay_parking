@@ -6,7 +6,8 @@ class ButtonBlueWithIcon extends StatelessWidget {
   IconData iconButton = Icons.bluetooth_audio;
   Widget page;
 
-  ButtonBlueWithIcon(this.iconButton, this.textButton, this.page);
+  ButtonBlueWithIcon(this.iconButton, this.textButton, this.page, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +30,14 @@ class ButtonBlueWithIcon extends StatelessWidget {
 
     final banner = Container(
       margin: const EdgeInsets.only(top: 2.0, left: 10.0),
-      padding: EdgeInsets.only(left: 50.0, right: 5.0),
+      padding: const EdgeInsets.only(left: 50.0, right: 5.0),
       width: 220.0,
       height: 50.0,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
           border: Border.all(
               color: Colors.blue, width: 4.0, style: BorderStyle.solid),
-          color: Color.fromARGB(76, 250, 250, 250)),
+          color: const Color.fromARGB(76, 250, 250, 250)),
       child: Center(
         child: TextButton(
             onPressed: () {
@@ -55,11 +56,10 @@ class ButtonBlueWithIcon extends StatelessWidget {
     );
 
     return Container(
-      margin: EdgeInsets.only(top: 10.0),
+      margin: const EdgeInsets.only(top: 10.0),
       child: Stack(
         children: [banner, card],
       ),
     );
-    ;
   }
 }

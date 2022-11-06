@@ -1,4 +1,4 @@
-import 'dart:js_util';
+// ignore_for_file: must_be_immutable, non_constant_identifier_names
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class ButtonSingIn extends StatelessWidget {
         height: 50.0,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
-            color: Color(0xFFFFDF40)),
+            color: const Color(0xFFFFDF40)),
         child: Center(
           child: TextButton(
               onPressed: () {

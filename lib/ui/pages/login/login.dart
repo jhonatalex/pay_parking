@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/pages/home/home.dart';
 import 'package:pay_parking/ui/widgets/background.dart';
-import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
-import 'package:pay_parking/ui/widgets/button_with_background.dart';
 
 import '../../widgets/button_sing_in.dart';
 import '../../widgets/input_email_field.dart';
@@ -43,7 +41,7 @@ class _LoginState extends State<Login> {
     final card_login = Center(
         child: Stack(
       children: [
-        CardContainer(),
+        const CardContainer(),
         Container(
           margin: const EdgeInsets.only(top: 70.0),
           child: Column(
@@ -57,14 +55,14 @@ class _LoginState extends State<Login> {
                 //BOTONES
                 // CAMPO DE EMAIL
                 EmailField("Correo Electrónico", emailController),
-                SizedBox(),
+                const SizedBox(),
                 //CAMPO DE CONTRASEÑA
                 PasswordField("Contraseña", passwordController),
-                SizedBox(),
+                const SizedBox(),
                 //BOTON DE
-                ButtonSingIn(
-                    "Ingresar", emailController, passwordController, Home()),
-                Divider(
+                ButtonSingIn("Ingresar", emailController, passwordController,
+                    const Home()),
+                const Divider(
                   height: 15,
                   thickness: 1,
                   indent: 130,
@@ -73,7 +71,7 @@ class _LoginState extends State<Login> {
                 ),
                 TextButton(
                     onPressed: () {},
-                    child: Text("Olvidó su contraseña ",
+                    child: const Text("Olvidó su contraseña ",
                         style: TextStyle(color: Colors.black))),
               ]),
         )

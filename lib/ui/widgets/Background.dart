@@ -7,7 +7,7 @@ class Background extends StatelessWidget {
       Container(
           height: double.infinity,
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xFF2196f3),
           )),
       Container(
@@ -15,7 +15,7 @@ class Background extends StatelessWidget {
               clipper: WaveClipper(), //Puedes usar WaveClipper oWaveClipper1
               child: Container(
                   height: 350,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 231, 231, 233)))))
     ]);
     return stackBackground;
@@ -31,7 +31,7 @@ class BackgroundImagen extends StatelessWidget {
       Container(
           height: double.infinity,
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xFF2196f3),
           )),
       Container(
@@ -40,7 +40,7 @@ class BackgroundImagen extends StatelessWidget {
               child: Container(
                   height: 300,
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 231, 231, 233),
+                      color: const Color.fromARGB(255, 231, 231, 233),
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage(pathImage),
@@ -56,7 +56,7 @@ class BackgroundImagen extends StatelessWidget {
 class WaveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    var path = new Path();
+    var path = Path();
 
     path.lineTo(0.0, size.height - 100);
     var firstStart = Offset(size.width / 4, size.height - 20);
@@ -83,7 +83,7 @@ class WaveClipper extends CustomClipper<Path> {
 class WaveClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    var path = new Path();
+    var path = Path();
 
     path.lineTo(0.0, size.height - 100);
     var firstStart = Offset(size.width / 6, size.height - 40);
