@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
 
 import '../../widgets/app_bar.dart';
-import '../../widgets/button_with_background.dart';
-import '../home/home.dart';
 
 class OpenBarrier extends StatelessWidget {
   const OpenBarrier({Key? key}) : super(key: key);
@@ -11,7 +9,7 @@ class OpenBarrier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imageBarrier = Container(
-        margin: EdgeInsets.only(top: 0),
+        margin: const EdgeInsets.only(top: 0),
         width: 150,
         height: 150,
         decoration: const BoxDecoration(
@@ -21,7 +19,7 @@ class OpenBarrier extends StatelessWidget {
         )));
 
     final imageBluetooh = Container(
-        margin: EdgeInsets.only(top: 0),
+        margin: const EdgeInsets.only(top: 0),
         width: 200,
         height: 150,
         decoration: const BoxDecoration(
@@ -31,7 +29,7 @@ class OpenBarrier extends StatelessWidget {
         )));
 
     final textOpen = Container(
-        margin: EdgeInsets.only(top: 0),
+        margin: const EdgeInsets.only(top: 0),
         width: 250,
         child: Column(children: const [
           Text("Entrada",

@@ -4,11 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/pages/home/home.dart';
 import 'package:pay_parking/ui/widgets/background.dart';
-import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
-import 'package:pay_parking/ui/widgets/button_with_background.dart';
 
+import '../../widgets/button_sing_in.dart';
 import '../../widgets/input_email_field.dart';
 import '../../widgets/input_password_field.dart';
 
@@ -51,7 +50,7 @@ class _LoginState extends State<Login> {
     final card_login = Center(
         child: Stack(
       children: [
-        CardContainer(),
+        const CardContainer(),
         Container(
           margin: const EdgeInsets.only(top: 70.0),
           child: Column(
@@ -65,98 +64,13 @@ class _LoginState extends State<Login> {
                 //BOTONES
                 // CAMPO DE EMAIL
                 EmailField("Correo Electrónico", emailController),
-                SizedBox(),
+                const SizedBox(),
                 //CAMPO DE CONTRASEÑA
                 PasswordField("Contraseña", passwordController),
-                SizedBox(),
-
-                //BOTON DE INICIO SESSION
-                Container(
-                    margin: const EdgeInsets.only(top: 20.0),
-                    width: 220.0,
-                    height: 50.0,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        color: Color(0xFFFFDF40)),
-                    child: Center(
-                      child: TextButton(
-                          onPressed: () async {
-                            try {
-                              String trimmedEmail = emailController.text.trim();
-                              String trimmedPassword =
-                                  passwordController.text.trim();
-
-                              //try to sign in
-                              UserCredential? userCred = await FirebaseAuth
-                                  .instance
-                                  .signInWithEmailAndPassword(
-                                      email: trimmedEmail,
-                                      password: trimmedPassword);
-
-                              if (userCred.user!.emailVerified) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Home()));
-                              }
-                            } on FirebaseAuthException catch (e) {
-                              log(e.toString());
-
-                              if (e.code == 'invalid-email') {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content:
-                                        const Text('Email address is invalid'),
-                                    action: SnackBarAction(
-                                      label: 'Action',
-                                      onPressed: () {
-                                        // Code to execute.
-                                      },
-                                    ),
-                                  ),
-                                );
-                              }
-
-                              if (e.code == 'user-not-found') {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: const Text('Please Register'),
-                                    action: SnackBarAction(
-                                      label: 'Action',
-                                      onPressed: () {
-                                        // Code to execute.
-                                      },
-                                    ),
-                                  ),
-                                );
-                              } else if (e.code == 'wrong-password') {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: const Text('Invalid Passwordd'),
-                                    action: SnackBarAction(
-                                      label: 'Action',
-                                      onPressed: () {
-                                        // Code to execute.
-                                      },
-                                    ),
-                                  ),
-                                );
-                              }
-                            } catch (e) {
-                              log(e.toString());
-                            }
-                            /* Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => page));*/
-                          },
-                          child: const Center(
-                            child: Text("Ingresar",
-                                style: TextStyle(
-                                    fontFamily: "Lato",
-                                    fontSize: 18.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold)),
-                          )),
-                    )),
+                const SizedBox(),
+                //BOTON DE
+                ButtonSingIn("Ingresar", emailController, passwordController,
+                    const Home()),
                 const Divider(
                   height: 15,
                   thickness: 1,

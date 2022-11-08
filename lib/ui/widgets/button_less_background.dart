@@ -15,8 +15,10 @@ class ButtonLessBackground extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
             border: Border.all(
-                color: Color(0xFFFFDF40), width: 2.0, style: BorderStyle.solid),
-            color: Color.fromARGB(76, 250, 250, 250)),
+                color: const Color(0xFFFFDF40),
+                width: 2.0,
+                style: BorderStyle.solid),
+            color: const Color.fromARGB(76, 250, 250, 250)),
         child: Center(
           child: TextButton(
               onPressed: () {
