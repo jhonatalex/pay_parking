@@ -1,7 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:pay_parking/ui/pages/login/login_page.dart';
 import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
+import 'package:pay_parking/ui/pages/register/register_controller.dart';
+import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/input_email_field.dart';
 import 'package:pay_parking/ui/widgets/input_password_field.dart';
 
@@ -29,6 +33,7 @@ class _RegisterState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final RegisterController controller = Get.find<RegisterController>();
     final logo = Container(
         width: 200,
         height: 200,
@@ -65,14 +70,36 @@ class _RegisterState extends State<RegisterPage> {
                 ),
                 //BOTONES
                 // CAMPO DE EMAIL
-                EmailField("Correo Electrónico", emailController),
+                EmailField("Correo Electrónico", controller.emailController),
                 const SizedBox(),
                 //CAMPO DE CONTRASEÑA
-                PasswordField("Contraseña", passwordController),
+                PasswordField("Contraseña", controller.passwordController),
                 const SizedBox(),
                 //BOTON DE
-                ButtonSingUp("Registrarse", emailController, passwordController,
-                    const LoginMainPage()),
+                Container(
+                    margin: const EdgeInsets.only(top: 20.0),
+                    width: 220.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        color: const Color(0xFFFFDF40)),
+                    child: Center(
+                      child: TextButton(
+                          onPressed: () {
+                            controller.singUp();
+
+                            /* Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => page));*/
+                          },
+                          child: Center(
+                            child: Text("Registrame",
+                                style: const TextStyle(
+                                    fontFamily: "Lato",
+                                    fontSize: 18.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold)),
+                          )),
+                    )),
                 const Divider(
                   height: 15,
                   thickness: 1,
@@ -86,11 +113,7 @@ class _RegisterState extends State<RegisterPage> {
                     Text("¿Ya estás registrado?"),
                     TextButton(
                         onPressed: () {
-                          Navigator.pop(context);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage()));
+                          Get.offNamed(RouteNames.signIn);
                         },
                         child: const Text("Inicia Sesión",
                             style: TextStyle(
@@ -109,52 +132,3 @@ class _RegisterState extends State<RegisterPage> {
     ));
   }
 }
-
-class ButtonSingUp extends StatelessWidget {
-  String textButton = "";
-  Widget page;
-  TextEditingController email_user;
-  TextEditingController password_user;
-  ButtonSingUp(
-    this.textButton,
-    this.email_user,
-    this.password_user,
-    this.page,
-  );
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.only(top: 20.0),
-        width: 220.0,
-        height: 50.0,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            color: const Color(0xFFFFDF40)),
-        child: Center(
-          child: TextButton(
-              onPressed: () {
-                singUp();
-
-                /* Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => page));*/
-              },
-              child: Center(
-                child: Text(textButton,
-                    style: const TextStyle(
-                        fontFamily: "Lato",
-                        fontSize: 18.0,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold)),
-              )),
-        ));
-  }
-
-  Future singUp() async {
-    UserCredential result = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(
-            email: email_user.text, password: password_user.text);
-
-    debugPrint('movieTitle: $result');
-  }
-}
-//para probar push en rama
