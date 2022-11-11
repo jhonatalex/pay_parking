@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:pay_parking/ui/pages/open_barrier/open_barrier.dart';
+import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
@@ -85,6 +89,14 @@ class HomePage extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
+            ElevatedButton.icon(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+
+                  Get.offNamed(RouteNames.loginMain);
+                },
+                icon: Icon(Icons.arrow_back),
+                label: Text("Sign Out")),
             doSpace10,
             SizedBox(
               width: 280,
