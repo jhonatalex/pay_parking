@@ -7,4 +7,9 @@ abstract class AuthRepository {
     final String username,
     final String password,
   );
+
+  Future<UserCredential> createUserWithEmail(
+    final String username,
+    final String password,
+  );
 }
