@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pay_parking/ui/pages/home/home.dart';
-import 'package:pay_parking/ui/pages/login/login.dart';
-import 'package:pay_parking/ui/pages/login_main/login_main.dart';
-import 'package:pay_parking/ui/pages/register/register.dart';
+import 'package:pay_parking/ui/pages/home/home_page.dart';
+import 'package:pay_parking/ui/pages/login/login_page.dart';
+import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
+import 'package:pay_parking/ui/pages/register/register_page.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 
 class DrawerItems extends StatelessWidget {
@@ -65,7 +65,7 @@ class DrawerItems extends StatelessWidget {
           trailing: const Icon(Icons.keyboard_arrow_left, color: Colors.red),
           onTap: () {
             Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: ((context) => const Home())));
+                MaterialPageRoute(builder: ((context) => const HomePage())));
           },
         ),
         ListTile(
@@ -76,8 +76,8 @@ class DrawerItems extends StatelessWidget {
           trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
           onTap: () {
             //Navigator.pop(context); para cerrar menu
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: ((context) => const Login())));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: ((context) => const LoginPage())));
           },
         ),
         ListTile(
@@ -87,8 +87,8 @@ class DrawerItems extends StatelessWidget {
           leading: const Icon(Icons.login, color: Colors.blue),
           trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
           onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: ((context) => const LoginMain())));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => const LoginMainPage())));
           },
         ),
         ListTile(
@@ -98,8 +98,8 @@ class DrawerItems extends StatelessWidget {
           leading: const Icon(Icons.door_front_door, color: Colors.blue),
           trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
           onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: ((context) => const Register())));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => const RegisterPage())));
           },
         ),
         ListTile(

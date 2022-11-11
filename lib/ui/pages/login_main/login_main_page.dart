@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pay_parking/ui/pages/login/login.dart';
+import 'package:pay_parking/ui/pages/login/login_page.dart';
 import 'package:pay_parking/ui/widgets/Background.dart';
 import 'package:pay_parking/ui/widgets/button_less_background.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
@@ -7,10 +7,10 @@ import '../../widgets/button_with_background2.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../register/register.dart';
+import '../register/register_page.dart';
 
-class LoginMain extends StatelessWidget {
-  const LoginMain({Key? key}) : super(key: key);
+class LoginMainPage extends StatelessWidget {
+  const LoginMainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +54,8 @@ class LoginMain extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Flexible(child: logo),
-                  ButtonWithBackground2("Ingresar", const Login()),
-                  ButtonLessBackground("Crear Cuenta", const Register()),
+                  ButtonWithBackground2("Ingresar"),
+                  ButtonLessBackground("Crear Cuenta"),
                   Container(
                     margin: const EdgeInsets.only(top: 15.0),
                     child: const Text("___________ O ingrese con __________",

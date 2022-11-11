@@ -1,21 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pay_parking/ui/pages/login/login.dart';
-import 'package:pay_parking/ui/pages/login_main/login_main.dart';
+import 'package:pay_parking/ui/pages/login/login_page.dart';
+import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
 import 'package:pay_parking/ui/widgets/input_email_field.dart';
 import 'package:pay_parking/ui/widgets/input_password_field.dart';
 
 import '../../widgets/Background.dart';
 import '../../widgets/card_transparent.dart';
 
-class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<RegisterPage> createState() => _RegisterState();
 }
 
-class _RegisterState extends State<Register> {
+class _RegisterState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -72,7 +72,7 @@ class _RegisterState extends State<Register> {
                 const SizedBox(),
                 //BOTON DE
                 ButtonSingUp("Registrarse", emailController, passwordController,
-                    const LoginMain()),
+                    const LoginMainPage()),
                 const Divider(
                   height: 15,
                   thickness: 1,
@@ -87,8 +87,10 @@ class _RegisterState extends State<Register> {
                     TextButton(
                         onPressed: () {
                           Navigator.pop(context);
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Login()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
                         },
                         child: const Text("Inicia Sesión",
                             style: TextStyle(
