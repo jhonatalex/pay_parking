@@ -14,4 +14,18 @@ class AuthFirebase implements AuthRepository {
       password: password,
     );
   }
+
+  @override
+  Future<UserCredential> createUserWithEmail(
+    final String username,
+    final String password,
+  ) {
+    return FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: username,
+      password: password,
+    );
+  }
+
+//TODO RESET EMAIL GOOGLE FACE
+
 }

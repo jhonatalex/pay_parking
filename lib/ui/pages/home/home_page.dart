@@ -7,8 +7,8 @@ import 'package:pay_parking/ui/widgets/drawer_items.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 import 'package:pay_parking/ui/widgets/app_bar.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

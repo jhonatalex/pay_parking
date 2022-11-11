@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../pages/login_main/login_main_controller.dart';
+import '../routes/route_names.dart';
 
 class ButtonWithBackground2 extends StatelessWidget {
   String textButton = "";
-  Widget page;
 
   ButtonWithBackground2(
     this.textButton,
-    this.page,
   );
 
   @override
   Widget build(BuildContext context) {
+    final LoginMainController controller = Get.find<LoginMainController>();
+
     return Container(
         margin: const EdgeInsets.only(top: 20.0),
         width: 220.0,
@@ -21,10 +26,10 @@ class ButtonWithBackground2 extends StatelessWidget {
         child: Center(
           child: TextButton(
               onPressed: () {
-                //singIn();
-
-                Navigator.push(
+                controller.goToLogin();
+                /*Navigator.push(
                     context, MaterialPageRoute(builder: (context) => page));
+                */
               },
               child: Center(
                 child: Text(textButton,
