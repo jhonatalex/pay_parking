@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:pay_parking/ui/pages/home/home_page.dart';
 import 'package:pay_parking/ui/pages/login/login_controller.dart';
+import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/background.dart';
 
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
@@ -60,13 +61,16 @@ class _LoginState extends State<LoginPage> {
         Container(
           margin: const EdgeInsets.only(top: 70.0),
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Flexible(
-                  fit: FlexFit.tight,
+                  //fit: FlexFit.tight, esto da error en una pantalla mas grade
                   child: logo,
                 ),
-
+                SizedBox(
+                  height: 10,
+                ),
                 //BOTONES
                 // CAMPO DE EMAIL
                 EmailField("Correo Electrónico", controller.emailController),
@@ -88,8 +92,7 @@ class _LoginState extends State<LoginPage> {
                           onPressed: () {
                             controller.signIn();
 
-                            /* Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => page));*/
+                            /* Navigator.push(                                  context, MaterialPageRoute(builder: (context) => page));*/
                           },
                           child: const Center(
                             child: Text("Ingresar",
@@ -111,13 +114,28 @@ class _LoginState extends State<LoginPage> {
                     onPressed: () {},
                     child: const Text("Olvidó su contraseña ",
                         style: TextStyle(color: Colors.black))),
+                //Solo para navegar porque el botton back no funciona
+                TextButton(
+                    onPressed: () {
+                      Get.offNamed(RouteNames.register);
+                    },
+                    child: const Text(
+                      "Resgistrarse",
+                    )),
+                TextButton(
+                    onPressed: () {
+                      Get.offNamed(RouteNames.loginMain);
+                    },
+                    child: const Text(
+                      "Volver",
+                    )),
               ]),
         )
       ],
     ));
 
-    return Material(
-        child: Stack(
+    return Scaffold(
+        body: Stack(
       children: [Background(), card_login],
     ));
   }
