@@ -111,7 +111,9 @@ class _LoginState extends State<LoginPage> {
                   color: Colors.black,
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.offNamed(RouteNames.forgotPassword);
+                    },
                     child: const Text("Olvidó su contraseña ",
                         style: TextStyle(color: Colors.black))),
                 //Solo para navegar porque el botton back no funciona
