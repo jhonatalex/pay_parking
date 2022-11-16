@@ -12,10 +12,9 @@ import 'package:pay_parking/ui/routes/route_pages.dart';
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp().then((value) => {runApp(const MyApp())});
 }*/
-Future<void> main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MyApp());
+  Firebase.initializeApp().then((value) => {runApp(const MyApp())});
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false, //Quitar el banner demo
       initialBinding: const AppBinding(),
-      initialRoute: RouteNames.splash,
+      initialRoute: RouteNames.loginMain,
       getPages: RoutePages.all,
     );
   }
