@@ -72,8 +72,10 @@ class LoginMainPage extends StatelessWidget {
       ],
     ));
 
-    return Stack(
-      children: [Background(), cardLogin],
+    return Scaffold(
+      body: Stack(
+        children: [Background(), cardLogin],
+      ),
     );
   }
 }

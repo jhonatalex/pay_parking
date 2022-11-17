@@ -59,8 +59,12 @@ class _LoginState extends State<LoginPage> {
       children: [
         const CardContainer(),
         Container(
-          margin: const EdgeInsets.only(top: 70.0),
-          child: Column(
+          //Comentando margin se corrige ↓ ↓ el desbordamiento de pantalla
+          //margin: const EdgeInsets.only(top: 70.0),
+
+          //o tambien cambiando Column por listView y su padding de 90
+          child: ListView(padding: EdgeInsets.symmetric(horizontal: 90.0),
+              // child: Column(
               // crossAxisAlignment: CrossAxisAlignment.center,
               //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -114,23 +118,21 @@ class _LoginState extends State<LoginPage> {
                     onPressed: () {
                       Get.offNamed(RouteNames.forgotPassword);
                     },
-                    child: const Text("Olvidó su contraseña ",
+                    child: const Text("¿Olvidó su contraseña?",
                         style: TextStyle(color: Colors.black))),
                 //Solo para navegar porque el botton back no funciona
                 TextButton(
                     onPressed: () {
                       Get.offNamed(RouteNames.register);
                     },
-                    child: const Text(
-                      "Resgistrarse",
-                    )),
+                    child: const Text("Resgistrarse",
+                        style: TextStyle(color: Colors.black))),
                 TextButton(
                     onPressed: () {
                       Get.offNamed(RouteNames.loginMain);
                     },
-                    child: const Text(
-                      "Volver",
-                    )),
+                    child: const Text("Volver",
+                        style: TextStyle(color: Colors.black))),
               ]),
         )
       ],
