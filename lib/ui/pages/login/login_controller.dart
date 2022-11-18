@@ -28,6 +28,9 @@ class LoginController extends GetxController {
 
     } on FirebaseAuthException catch (e) {
       Get.showSnackbar(ErrorSnackbar(e.message ?? e.code));
+      print(
+        emailController.text.trim() + " - " + passwordController.text,
+      );
     }
   }
 

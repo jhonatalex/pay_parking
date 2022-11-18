@@ -84,11 +84,27 @@ class HomePage extends StatelessWidget {
               children: [cardTarjet])
         ]));
 
+    final user = FirebaseAuth.instance.currentUser!;
     final content = Container(
       color: const Color.fromARGB(111, 247, 247, 247),
       child: Center(
         child: Column(
           children: [
+            SizedBox(
+              height: 24,
+            ),
+            Text(
+              "Iniciaste sesión como",
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(),
+            Text(
+              user.email!,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             ElevatedButton.icon(
                 onPressed: () {
                   FirebaseAuth.instance.signOut();

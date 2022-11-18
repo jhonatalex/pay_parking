@@ -1,18 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+final user = FirebaseAuth.instance.currentUser!;
 final appBar = AppBar(
   backgroundColor: Colors.white,
   foregroundColor: Colors.black,
   title: Column(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: const [
+    children: [
       Text("Bienvenido...",
           style: TextStyle(
               fontFamily: "Lato",
               fontSize: 16.0,
               color: Colors.black,
               fontWeight: FontWeight.bold)),
-      Text("Jhonatan Mejias",
+      Text(user.email!,
           style: TextStyle(
               fontFamily: "Lato",
               fontSize: 10.0,
