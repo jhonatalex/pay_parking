@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:pay_parking/ui/pages/forgot_password/forgot_password_binding.dart';
+import 'package:pay_parking/ui/pages/forgot_password/forgot_password_page.dart';
 import 'package:pay_parking/ui/pages/home/home_binding.dart';
 import 'package:pay_parking/ui/pages/login/login_binding.dart';
 import 'package:pay_parking/ui/pages/login/login_page.dart';
@@ -45,6 +47,13 @@ class RoutePages {
         page: () => const RegisterPage(),
         transition: Transition.cupertino,
         binding: const RegisterBinding(),
+      ),
+      GetPage(
+        name: RouteNames.forgotPassword,
+        page: () => //const
+            ForgotPasswordPage(),
+        transition: Transition.cupertino,
+        binding: const ForgotPasswordBinding(),
       ),
     ];
   }

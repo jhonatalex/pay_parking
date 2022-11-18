@@ -20,16 +20,10 @@ class LoginController extends GetxController {
 
   void signIn() async {
     try {
-      await //const AuthFirebase().signInWithEmail("uno@gmail.com", "password"
-          //emailController.text.trim(),
-          //passwordController.text,
-          // );
-
-          FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: "uno@gmail.com",
-        password: "password",
+      await const AuthFirebase().signInWithEmail(
+        emailController.text.trim(),
+        passwordController.text,
       );
-
       Get.offNamed(RouteNames.home); //ASI NAVEGO
 
     } on FirebaseAuthException catch (e) {

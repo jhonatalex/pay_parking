@@ -1,39 +1,33 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:pay_parking/ui/pages/login/login_page.dart';
-import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
-import 'package:pay_parking/ui/pages/register/register_controller.dart';
+import 'package:pay_parking/ui/pages/forgot_password/forgot_password_controller.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/input_email_field.dart';
-import 'package:pay_parking/ui/widgets/input_password_field.dart';
 
 import '../../widgets/Background.dart';
 import '../../widgets/card_transparent.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterState();
+  State<ForgotPasswordPage> createState() => _ForgotPasswordState();
 }
 
-class _RegisterState extends State<RegisterPage> {
+class _ForgotPasswordState extends State<ForgotPasswordPage> {
   final emailController = TextEditingController();
-  final passwordController = TextEditingController();
 
   @override
   void dispose() {
     // Limpia el controlador cuando el Widget se descarte
     emailController.dispose();
-    passwordController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final RegisterController controller = Get.find<RegisterController>();
+    final ForgotPasswordController controller =
+        Get.find<ForgotPasswordController>();
     final logo = Container(
         width: 200,
         height: 200,
@@ -58,12 +52,12 @@ class _RegisterState extends State<RegisterPage> {
                 SizedBox(
                   height: 10,
                 ),
-                const Text("Bienvenido",
+                const Text("Recuperar contraseña",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 30)),
-                const Text("Rellena el formulario para crear tu cuenta",
+                const Text("Recibe un correo para resetear tu contraseña",
                     style: TextStyle(color: Colors.black, fontSize: 14)),
                 SizedBox(
                   height: 10,
@@ -72,8 +66,6 @@ class _RegisterState extends State<RegisterPage> {
                 // CAMPO DE EMAIL
                 EmailField("Correo Electrónico", controller.emailController),
                 const SizedBox(),
-                //CAMPO DE CONTRASEÑA
-                PasswordField("Contraseña", controller.passwordController),
                 const SizedBox(),
                 //BOTON DE
                 Container(
@@ -86,13 +78,13 @@ class _RegisterState extends State<RegisterPage> {
                     child: Center(
                       child: TextButton(
                           onPressed: () {
-                            controller.singUp();
+                            controller.resetPassword();
 
                             /* Navigator.push(
                     context, MaterialPageRoute(builder: (context) => page));*/
                           },
                           child: Center(
-                            child: Text("Registrame",
+                            child: Text("Enviar correo",
                                 style: const TextStyle(
                                     fontFamily: "Lato",
                                     fontSize: 18.0,
@@ -110,7 +102,7 @@ class _RegisterState extends State<RegisterPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("¿Ya estás registrado?"),
+                    Text("¿Recuerdas la contraseña?"),
                     TextButton(
                         onPressed: () {
                           Get.offNamed(RouteNames.signIn);

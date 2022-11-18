@@ -6,4 +6,5 @@ class RouteNames {
   static const String loginMain = '/login';
   static const String register = '/register';
   static const String openBarrier = '/open-barrier';
+  static const String forgotPassword = '/forgot-password';
 }
