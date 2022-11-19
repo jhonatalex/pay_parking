@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../pages/login_main/login_main_controller.dart';
-import '../routes/route_names.dart';
 
 class ButtonWithBackground2 extends StatelessWidget {
   String textButton = "";

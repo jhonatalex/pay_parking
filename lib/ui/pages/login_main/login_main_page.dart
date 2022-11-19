@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pay_parking/ui/pages/login/login_page.dart';
 import 'package:pay_parking/ui/widgets/Background.dart';
 import 'package:pay_parking/ui/widgets/button_less_background.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
 import '../../widgets/button_with_background2.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../register/register_page.dart';
 
 class LoginMainPage extends StatelessWidget {
   const LoginMainPage({Key? key}) : super(key: key);

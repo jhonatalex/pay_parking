@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:pay_parking/ui/pages/open_barrier/open_barrier.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';

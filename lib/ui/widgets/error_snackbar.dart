@@ -6,7 +6,7 @@ class ErrorSnackbar extends GetSnackBar {
   const ErrorSnackbar(final String message) : super(message: message);
 
   @override
-  Color get backgroundColor => Color.fromARGB(255, 255, 255, 255);
+  Color get backgroundColor => const Color.fromARGB(255, 255, 255, 255);
 
   @override
   Widget? get icon =>

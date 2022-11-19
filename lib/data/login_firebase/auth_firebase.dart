@@ -26,11 +26,9 @@ class AuthFirebase implements AuthRepository {
     );
   }
 
-  @override
   Future<void> forgotPasswordWithEmail(
     final String username,
   ) {
-    print("hola");
     return FirebaseAuth.instance.sendPasswordResetEmail(email: username);
   }
 

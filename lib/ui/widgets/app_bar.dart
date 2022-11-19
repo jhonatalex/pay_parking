@@ -8,14 +8,14 @@ final appBar = AppBar(
   title: Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Text("Bienvenido...",
+      const Text("Bienvenido...",
           style: TextStyle(
               fontFamily: "Lato",
               fontSize: 16.0,
               color: Colors.black,
               fontWeight: FontWeight.bold)),
       Text(user.email!,
-          style: TextStyle(
+          style: const TextStyle(
               fontFamily: "Lato",
               fontSize: 10.0,
               color: Colors.black,

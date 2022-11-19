@@ -1,9 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:pay_parking/ui/pages/login/login_page.dart';
-import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
 import 'package:pay_parking/ui/pages/register/register_controller.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/input_email_field.dart';
@@ -48,14 +44,14 @@ class _RegisterState extends State<RegisterPage> {
       children: [
         const CardContainer(),
         Container(
-          margin: const EdgeInsets.only(top: 70.0),
+          // margin: const EdgeInsets.only(top: 70.0),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Flexible(
                   child: logo,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 const Text("Bienvenido",
@@ -65,7 +61,7 @@ class _RegisterState extends State<RegisterPage> {
                         fontSize: 30)),
                 const Text("Rellena el formulario para crear tu cuenta",
                     style: TextStyle(color: Colors.black, fontSize: 14)),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 //BOTONES
@@ -91,9 +87,9 @@ class _RegisterState extends State<RegisterPage> {
                             /* Navigator.push(
                     context, MaterialPageRoute(builder: (context) => page));*/
                           },
-                          child: Center(
+                          child: const Center(
                             child: Text("Registrame",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontFamily: "Lato",
                                     fontSize: 18.0,
                                     color: Colors.black,
@@ -110,7 +106,7 @@ class _RegisterState extends State<RegisterPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("¿Ya estás registrado?"),
+                    const Text("¿Ya estás registrado?"),
                     TextButton(
                         onPressed: () {
                           Get.offNamed(RouteNames.signIn);
@@ -121,6 +117,14 @@ class _RegisterState extends State<RegisterPage> {
                                 fontWeight: FontWeight.bold))),
                   ],
                 ),
+                /* TextButton(
+                    onPressed: () {
+                      Get.offNamed(RouteNames.signIn);
+                    },
+                    child: const Text("ver pagina verify email",
+                        style: TextStyle(
+                            color: Colors.yellow,
+                            fontWeight: FontWeight.bold))),*/
               ]),
         )
       ],

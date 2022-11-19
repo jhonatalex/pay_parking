@@ -1,18 +1,12 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:pay_parking/ui/pages/home/home_page.dart';
 import 'package:pay_parking/ui/pages/login/login_controller.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/background.dart';
 
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
 
-import '../../widgets/button_sing_in.dart';
 import '../../widgets/input_email_field.dart';
 import '../../widgets/input_password_field.dart';
 
@@ -63,77 +57,77 @@ class _LoginState extends State<LoginPage> {
           //margin: const EdgeInsets.only(top: 70.0),
 
           //o tambien cambiando Column por listView y su padding de 90
-          child: ListView(padding: EdgeInsets.symmetric(horizontal: 90.0),
+          child: Column(//padding: EdgeInsets.symmetric(horizontal: 90.0),
               // child: Column(
               // crossAxisAlignment: CrossAxisAlignment.center,
               //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Flexible(
-                  //fit: FlexFit.tight, esto da error en una pantalla mas grade
-                  child: logo,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                //BOTONES
-                // CAMPO DE EMAIL
-                EmailField("Correo Electrónico", controller.emailController),
-                const SizedBox(),
-                //CAMPO DE CONTRASEÑA
-                PasswordField("Contraseña", controller.passwordController),
-                const SizedBox(),
+            Flexible(
+              //fit: FlexFit.tight, esto da error en una pantalla mas grade
+              child: logo,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            //BOTONES
+            // CAMPO DE EMAIL
+            EmailField("Correo Electrónico", controller.emailController),
+            const SizedBox(),
+            //CAMPO DE CONTRASEÑA
+            PasswordField("Contraseña", controller.passwordController),
+            const SizedBox(),
 
-                //BOTON DE INICIO DE SESSION
-                Container(
-                    margin: const EdgeInsets.only(top: 20.0),
-                    width: 220.0,
-                    height: 50.0,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        color: Color(0xFFFFDF40)),
-                    child: Center(
-                      child: TextButton(
-                          onPressed: () {
-                            controller.signIn();
+            //BOTON DE INICIO DE SESSION
+            Container(
+                margin: const EdgeInsets.only(top: 20.0),
+                width: 220.0,
+                height: 50.0,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: const Color(0xFFFFDF40)),
+                child: Center(
+                  child: TextButton(
+                      onPressed: () {
+                        controller.signIn();
 
-                            /* Navigator.push(                                  context, MaterialPageRoute(builder: (context) => page));*/
-                          },
-                          child: const Center(
-                            child: Text("Ingresar",
-                                style: TextStyle(
-                                    fontFamily: "Lato",
-                                    fontSize: 18.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold)),
-                          )),
-                    )),
-                const Divider(
-                  height: 15,
-                  thickness: 1,
-                  indent: 130,
-                  endIndent: 130,
-                  color: Colors.black,
-                ),
-                TextButton(
-                    onPressed: () {
-                      Get.offNamed(RouteNames.forgotPassword);
-                    },
-                    child: const Text("¿Olvidó su contraseña?",
-                        style: TextStyle(color: Colors.black))),
-                //Solo para navegar porque el botton back no funciona
-                TextButton(
-                    onPressed: () {
-                      Get.offNamed(RouteNames.register);
-                    },
-                    child: const Text("Resgistrarse",
-                        style: TextStyle(color: Colors.black))),
-                TextButton(
-                    onPressed: () {
-                      Get.offNamed(RouteNames.loginMain);
-                    },
-                    child: const Text("Volver",
-                        style: TextStyle(color: Colors.black))),
-              ]),
+                        /* Navigator.push(                                  context, MaterialPageRoute(builder: (context) => page));*/
+                      },
+                      child: const Center(
+                        child: Text("Ingresar",
+                            style: TextStyle(
+                                fontFamily: "Lato",
+                                fontSize: 18.0,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)),
+                      )),
+                )),
+            const Divider(
+              height: 15,
+              thickness: 1,
+              indent: 130,
+              endIndent: 130,
+              color: Colors.black,
+            ),
+            TextButton(
+                onPressed: () {
+                  Get.offNamed(RouteNames.forgotPassword);
+                },
+                child: const Text("¿Olvidó su contraseña?",
+                    style: TextStyle(color: Colors.black))),
+            //Solo para navegar porque el botton back no funciona
+            TextButton(
+                onPressed: () {
+                  Get.offNamed(RouteNames.register);
+                },
+                child: const Text("Resgistrarse",
+                    style: TextStyle(color: Colors.black))),
+            TextButton(
+                onPressed: () {
+                  Get.offNamed(RouteNames.loginMain);
+                },
+                child: const Text("Volver",
+                    style: TextStyle(color: Colors.black))),
+          ]),
         )
       ],
     ));

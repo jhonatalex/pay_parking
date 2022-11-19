@@ -49,7 +49,7 @@ class _ForgotPasswordState extends State<ForgotPasswordPage> {
                 Flexible(
                   child: logo,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 const Text("Recuperar contraseña",
@@ -59,7 +59,7 @@ class _ForgotPasswordState extends State<ForgotPasswordPage> {
                         fontSize: 30)),
                 const Text("Recibe un correo para resetear tu contraseña",
                     style: TextStyle(color: Colors.black, fontSize: 14)),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 //BOTONES
@@ -83,9 +83,9 @@ class _ForgotPasswordState extends State<ForgotPasswordPage> {
                             /* Navigator.push(
                     context, MaterialPageRoute(builder: (context) => page));*/
                           },
-                          child: Center(
+                          child: const Center(
                             child: Text("Enviar correo",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontFamily: "Lato",
                                     fontSize: 18.0,
                                     color: Colors.black,
@@ -102,7 +102,7 @@ class _ForgotPasswordState extends State<ForgotPasswordPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("¿Recuerdas la contraseña?"),
+                    const Text("¿Recuerdas la contraseña?"),
                     TextButton(
                         onPressed: () {
                           Get.offNamed(RouteNames.signIn);
