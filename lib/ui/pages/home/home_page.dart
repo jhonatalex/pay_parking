@@ -3,7 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pay_parking/ui/pages/open_barrier/open_barrier.dart';
+import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
@@ -19,9 +19,9 @@ class HomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ButtonBlueWithIcon(
-            Icons.bluetooth, "ABRIR BARRERA", const OpenBarrier()),
+            Icons.bluetooth, "ABRIR BARRERA", const OpenBarrierPage()),
         ButtonBlueWithIcon(
-            Icons.local_parking, "ESTACIONAMIENTOS", const OpenBarrier()),
+            Icons.local_parking, "ESTACIONAMIENTOS", const OpenBarrierPage()),
         /*
         ButtonBlueWithIcon(
             Icons.monetization_on, "RECARGA", GradientBlue, Colors.blue),

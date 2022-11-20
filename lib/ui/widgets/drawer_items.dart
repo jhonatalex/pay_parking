@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/pages/home/home_page.dart';
 import 'package:pay_parking/ui/pages/login/login_page.dart';
 import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
+import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/pages/register/register_page.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 
@@ -100,6 +101,17 @@ class DrawerItems extends StatelessWidget {
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: ((context) => const RegisterPage())));
+          },
+        ),
+        ListTile(
+          title: const Text(
+            "Barrier",
+          ),
+          leading: const Icon(Icons.door_front_door, color: Colors.blue),
+          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => const OpenBarrierPage())));
           },
         ),
         ListTile(
