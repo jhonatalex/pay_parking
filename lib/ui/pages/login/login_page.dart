@@ -25,7 +25,6 @@ class _LoginState extends State<LoginPage> {
   bool isGoogleSignIn = false;
   String errorMessage = '';
   String successMessage = '';
-  final GlobalKey<FormState> _formStateKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -48,93 +47,87 @@ class _LoginState extends State<LoginPage> {
           image: AssetImage("assets/img/ParKiApp_logo.png"),
         )));
 
-    final card_login = Center(
+    final cardLogin = Center(
         child: Stack(
       children: [
         const CardContainer(),
-        Container(
-          //Comentando margin se corrige ↓ ↓ el desbordamiento de pantalla
-          //margin: const EdgeInsets.only(top: 70.0),
+        Column(//padding: EdgeInsets.symmetric(horizontal: 90.0),
+            // child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+          Flexible(
+            //fit: FlexFit.tight, esto da error en una pantalla mas grade
+            child: logo,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          //BOTONES
+          // CAMPO DE EMAIL
+          EmailField("Correo Electrónico", controller.emailController),
+          const SizedBox(),
+          //CAMPO DE CONTRASEÑA
+          PasswordField("Contraseña", controller.passwordController),
+          const SizedBox(),
 
-          //o tambien cambiando Column por listView y su padding de 90
-          child: Column(//padding: EdgeInsets.symmetric(horizontal: 90.0),
-              // child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              //mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-            Flexible(
-              //fit: FlexFit.tight, esto da error en una pantalla mas grade
-              child: logo,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            //BOTONES
-            // CAMPO DE EMAIL
-            EmailField("Correo Electrónico", controller.emailController),
-            const SizedBox(),
-            //CAMPO DE CONTRASEÑA
-            PasswordField("Contraseña", controller.passwordController),
-            const SizedBox(),
+          //BOTON DE INICIO DE SESSION
+          Container(
+              margin: const EdgeInsets.only(top: 20.0),
+              width: 220.0,
+              height: 50.0,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  color: const Color(0xFFFFDF40)),
+              child: Center(
+                child: TextButton(
+                    onPressed: () {
+                      controller.signIn();
 
-            //BOTON DE INICIO DE SESSION
-            Container(
-                margin: const EdgeInsets.only(top: 20.0),
-                width: 220.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    color: const Color(0xFFFFDF40)),
-                child: Center(
-                  child: TextButton(
-                      onPressed: () {
-                        controller.signIn();
-
-                        /* Navigator.push(                                  context, MaterialPageRoute(builder: (context) => page));*/
-                      },
-                      child: const Center(
-                        child: Text("Ingresar",
-                            style: TextStyle(
-                                fontFamily: "Lato",
-                                fontSize: 18.0,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold)),
-                      )),
-                )),
-            const Divider(
-              height: 15,
-              thickness: 1,
-              indent: 130,
-              endIndent: 130,
-              color: Colors.black,
-            ),
-            TextButton(
-                onPressed: () {
-                  Get.offNamed(RouteNames.forgotPassword);
-                },
-                child: const Text("¿Olvidó su contraseña?",
-                    style: TextStyle(color: Colors.black))),
-            //Solo para navegar porque el botton back no funciona
-            TextButton(
-                onPressed: () {
-                  Get.offNamed(RouteNames.register);
-                },
-                child: const Text("Resgistrarse",
-                    style: TextStyle(color: Colors.black))),
-            TextButton(
-                onPressed: () {
-                  Get.offNamed(RouteNames.loginMain);
-                },
-                child: const Text("Volver",
-                    style: TextStyle(color: Colors.black))),
-          ]),
-        )
+                      /* Navigator.push(                                  context, MaterialPageRoute(builder: (context) => page));*/
+                    },
+                    child: const Center(
+                      child: Text("Ingresar",
+                          style: TextStyle(
+                              fontFamily: "Lato",
+                              fontSize: 18.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                    )),
+              )),
+          const Divider(
+            height: 15,
+            thickness: 1,
+            indent: 130,
+            endIndent: 130,
+            color: Colors.black,
+          ),
+          TextButton(
+              onPressed: () {
+                Get.offNamed(RouteNames.forgotPassword);
+              },
+              child: const Text("¿Olvidó su contraseña?",
+                  style: TextStyle(color: Colors.black))),
+          //Solo para navegar porque el botton back no funciona
+          TextButton(
+              onPressed: () {
+                Get.offNamed(RouteNames.register);
+              },
+              child: const Text("Resgistrarse",
+                  style: TextStyle(color: Colors.black))),
+          TextButton(
+              onPressed: () {
+                Get.offNamed(RouteNames.loginMain);
+              },
+              child:
+                  const Text("Volver", style: TextStyle(color: Colors.black))),
+        ])
       ],
     ));
 
     return Scaffold(
         body: Stack(
-      children: [Background(), card_login],
+      children: [Background(), cardLogin],
     ));
   }
 }

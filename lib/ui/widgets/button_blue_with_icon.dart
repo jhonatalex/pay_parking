@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 
+// ignore: must_be_immutable
 class ButtonBlueWithIcon extends StatelessWidget {
   String textButton = "";
   IconData iconButton = Icons.bluetooth_audio;

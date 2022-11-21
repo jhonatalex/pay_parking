@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.green,
             gradient: GradientBlue,
             borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-            boxShadow: [ShadowBlueDown]),
+            boxShadow: const [ShadowBlueDown]),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Image.asset(
             "assets/img/bancamiga_logo.png",
@@ -88,7 +88,6 @@ class _HomePageState extends State<HomePage> {
               children: [cardTarjet])
         ]));
 
-    final user = FirebaseAuth.instance.currentUser!;
     final content = Container(
       color: const Color.fromARGB(111, 247, 247, 247),
       child: Center(

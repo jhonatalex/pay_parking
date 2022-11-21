@@ -53,14 +53,14 @@ class RoutePages {
       GetPage(
         name: RouteNames.forgotPassword,
         page: () => //const
-            ForgotPasswordPage(),
+            const ForgotPasswordPage(),
         transition: Transition.cupertino,
         binding: const ForgotPasswordBinding(),
       ),
       GetPage(
         name: RouteNames.verifyEmail,
         page: () => //const
-            VerifyEmailPage(),
+            const VerifyEmailPage(),
         transition: Transition.cupertino,
         binding: const VerifyEmailBinding(),
       ),

@@ -57,7 +57,7 @@ class OpenBarrierPage extends StatelessWidget {
         textOpen,
         //ButtonWithBackground("Entrar", Home())
       ])),
-      drawer: Drawer(
+      drawer: const Drawer(
         child: DrawerItems(),
       ),
     );

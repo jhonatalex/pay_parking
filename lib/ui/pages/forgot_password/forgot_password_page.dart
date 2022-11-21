@@ -120,7 +120,7 @@ class _ForgotPasswordState extends State<ForgotPasswordPage> {
 
     return Scaffold(
         body: Stack(
-      children: [Background(), cardLogin],
+      children: [const Background(), cardLogin],
     ));
   }
 }

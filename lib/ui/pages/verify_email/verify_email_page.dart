@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/pages/home/home_page.dart';
 
 class VerifyEmailPage extends StatefulWidget {
+  const VerifyEmailPage({Key? key}) : super(key: key);
+
   @override
   State<VerifyEmailPage> createState() => _VerifyEmailPageState();
 }
@@ -20,7 +22,6 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
     if (!isEmailVerified) {
       sendVerificationEmail();
-      print("se envia la verificion");
       timer = Timer.periodic(
           const Duration(seconds: 3), (_) => checkEmailVerified());
     }
@@ -54,6 +55,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     }
   }
 
+  @override
   Widget build(BuildContext context) => isEmailVerified
       ? const HomePage()
       : Scaffold(

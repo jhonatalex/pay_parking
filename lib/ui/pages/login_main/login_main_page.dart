@@ -71,7 +71,7 @@ class LoginMainPage extends StatelessWidget {
 
     return Scaffold(
       body: Stack(
-        children: [Background(), cardLogin],
+        children: [const Background(), cardLogin],
       ),
     );
   }

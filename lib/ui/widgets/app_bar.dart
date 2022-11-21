@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 
 var user = FirebaseAuth.instance.currentUser!;
@@ -32,7 +31,7 @@ final appBar = AppBar(
         icon: CircleAvatar(
           child: Text(
             inicial,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
           //backgroundImage: AssetImage("assets/img/jhonatan_mejias.jpg")
         ),
@@ -41,7 +40,7 @@ final appBar = AppBar(
             PopupMenuItem<int>(
                 value: 0,
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(Icons.person),
                     Text("  My Account"),
                   ],
@@ -49,7 +48,7 @@ final appBar = AppBar(
             PopupMenuItem<int>(
                 value: 1,
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(Icons.settings),
                     Text("  Settings"),
                   ],
@@ -57,7 +56,7 @@ final appBar = AppBar(
             PopupMenuItem<int>(
               value: 2,
               child: Row(
-                children: [
+                children: const [
                   Icon(Icons.output),
                   Text("  Logout"),
                 ],
@@ -67,12 +66,8 @@ final appBar = AppBar(
         },
         onSelected: (value) {
           if (value == 0) {
-            print("My account menu is selected.");
           } else if (value == 1) {
-            print("Settings menu is selected.");
           } else if (value == 2) {
-            print("Logout menu is selected.");
-
             FirebaseAuth.instance.signOut();
 
             Get.offNamed(RouteNames.loginMain);

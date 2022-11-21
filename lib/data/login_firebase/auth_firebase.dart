@@ -32,6 +32,7 @@ class AuthFirebase implements AuthRepository {
     return FirebaseAuth.instance.sendPasswordResetEmail(email: username);
   }
 
+// ignore: todo
 //TODO RESET EMAIL GOOGLE FACE
 
 }
