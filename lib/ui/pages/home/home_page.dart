@@ -3,26 +3,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:pay_parking/ui/pages/open_barrier/open_barrier.dart';
+import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 import 'package:pay_parking/ui/widgets/app_bar.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final funtions = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ButtonBlueWithIcon(
-            Icons.bluetooth, "ABRIR BARRERA", const OpenBarrier()),
+            Icons.bluetooth, "ABRIR BARRERA", const OpenBarrierPage()),
         ButtonBlueWithIcon(
-            Icons.local_parking, "ESTACIONAMIENTOS", const OpenBarrier()),
+            Icons.local_parking, "ESTACIONAMIENTOS", const OpenBarrierPage()),
         /*
         ButtonBlueWithIcon(
             Icons.monetization_on, "RECARGA", GradientBlue, Colors.blue),
@@ -40,7 +44,7 @@ class HomePage extends StatelessWidget {
             color: Colors.green,
             gradient: GradientBlue,
             borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-            boxShadow: [ShadowBlueDown]),
+            boxShadow: const [ShadowBlueDown]),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Image.asset(
             "assets/img/bancamiga_logo.png",
@@ -84,7 +88,6 @@ class HomePage extends StatelessWidget {
               children: [cardTarjet])
         ]));
 
-    final user = FirebaseAuth.instance.currentUser!;
     final content = Container(
       color: const Color.fromARGB(111, 247, 247, 247),
       child: Center(
@@ -126,6 +129,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+
     return Scaffold(
       appBar: appBar,
       body: content,

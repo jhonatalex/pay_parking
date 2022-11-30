@@ -33,7 +33,7 @@ class ForgotPasswordController extends GetxController {
       await const AuthFirebase()
           .forgotPasswordWithEmail(emailController.text.trim());
       Get.showSnackbar(
-          ErrorSnackbar("Correo de recuperación de contraseña enviado"));
+          const ErrorSnackbar("Correo de recuperación de contraseña enviado"));
     } on FirebaseAuthException catch (e) {
       //Get.showSnackbar(ErrorSnackbar(e.message ?? e.code));
 
@@ -41,7 +41,7 @@ class ForgotPasswordController extends GetxController {
       //no se si sea buena idea.
       if (e.message ==
           "We have blocked all requests from this device due to unusual activity. Try again later.") {
-        Get.showSnackbar(ErrorSnackbar(
+        Get.showSnackbar(const ErrorSnackbar(
             "Hemos bloqueado todas las solicitudes de este dispositivo debido a actividad inusual. Vuelva a intentarlo más tarde."));
 
         Get.offNamed(RouteNames.signIn);

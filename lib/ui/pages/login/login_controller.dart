@@ -24,13 +24,11 @@ class LoginController extends GetxController {
         emailController.text.trim(),
         passwordController.text,
       );
-      Get.offNamed(RouteNames.home); //ASI NAVEGO
+      Get.offNamed(RouteNames.verifyEmail);
+      //Get.offNamed(RouteNames.home); // home ASI NAVEGO
 
     } on FirebaseAuthException catch (e) {
       Get.showSnackbar(ErrorSnackbar(e.message ?? e.code));
-      print(
-        emailController.text.trim() + " - " + passwordController.text,
-      );
     }
   }
 

@@ -1,6 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class Background extends StatelessWidget {
+  const Background({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var stackBackground = Stack(children: [
@@ -10,21 +14,21 @@ class Background extends StatelessWidget {
           decoration: const BoxDecoration(
             color: Color(0xFF2196f3),
           )),
-      Container(
-          child: ClipPath(
-              clipper: WaveClipper(), //Puedes usar WaveClipper oWaveClipper1
-              child: Container(
-                  height: 350,
-                  decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 231, 231, 233)))))
+      ClipPath(
+          clipper: WaveClipper(), //Puedes usar WaveClipper oWaveClipper1
+          child: Container(
+              height: 350,
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 231, 231, 233))))
     ]);
     return stackBackground;
   }
 }
 
+// ignore: must_be_immutable
 class BackgroundImagen extends StatelessWidget {
   String pathImage = "assets/img/fondo-home.jpg";
-  BackgroundImagen(this.pathImage);
+  BackgroundImagen(this.pathImage, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var stackBackgroundImagen = Stack(children: [
@@ -34,20 +38,19 @@ class BackgroundImagen extends StatelessWidget {
           decoration: const BoxDecoration(
             color: Color(0xFF2196f3),
           )),
-      Container(
-          child: ClipPath(
-              clipper: WaveClipper(), //Puedes usar WaveClipper oWaveClipper1
-              child: Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 231, 231, 233),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(pathImage),
-                        /*colorFilter: ColorFilter.mode(
-                              Color.fromRGBO(255, 255, 255, 0.70),
-                              BlendMode.srcATop)*/
-                      )))))
+      ClipPath(
+          clipper: WaveClipper(), //Puedes usar WaveClipper oWaveClipper1
+          child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 231, 231, 233),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(pathImage),
+                    /*colorFilter: ColorFilter.mode(
+                          Color.fromRGBO(255, 255, 255, 0.70),
+                          BlendMode.srcATop)*/
+                  ))))
     ]);
     return stackBackgroundImagen;
   }
