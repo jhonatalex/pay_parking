@@ -3,8 +3,8 @@ import 'package:pay_parking/ui/widgets/drawer_items.dart';
 
 import '../../widgets/app_bar.dart';
 
-class OpenBarrier extends StatelessWidget {
-  const OpenBarrier({Key? key}) : super(key: key);
+class OpenBarrierPage extends StatelessWidget {
+  const OpenBarrierPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class OpenBarrier extends StatelessWidget {
         textOpen,
         //ButtonWithBackground("Entrar", Home())
       ])),
-      drawer: Drawer(
+      drawer: const Drawer(
         child: DrawerItems(),
       ),
     );

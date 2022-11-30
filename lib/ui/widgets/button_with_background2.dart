@@ -1,16 +1,14 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../pages/login_main/login_main_controller.dart';
-import '../routes/route_names.dart';
 
 class ButtonWithBackground2 extends StatelessWidget {
   String textButton = "";
 
-  ButtonWithBackground2(
-    this.textButton,
-  );
+  ButtonWithBackground2(this.textButton, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

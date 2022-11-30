@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 
 /// Show a red snackbar with the error information.
 class ErrorSnackbar extends GetSnackBar {
-  const ErrorSnackbar(final String message) : super(message: message);
+  const ErrorSnackbar(final String message, {Key? key})
+      : super(key: key, message: message);
 
   @override
-  Color get backgroundColor => Color.fromARGB(255, 255, 255, 255);
+  Color get backgroundColor => const Color.fromARGB(255, 255, 255, 255);
 
   @override
   Widget? get icon =>
@@ -21,6 +22,7 @@ class ErrorSnackbar extends GetSnackBar {
   }
 
   @override
+  // ignore: todo
   // TODO: implement duration
   Duration? get duration => const Duration(seconds: 5);
 
