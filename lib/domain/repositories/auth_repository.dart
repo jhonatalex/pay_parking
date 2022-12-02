@@ -12,4 +12,6 @@ abstract class AuthRepository {
     final String username,
     final String password,
   );
+
+  Future<UserCredential> signInGoogle(googleAuth);
 }
