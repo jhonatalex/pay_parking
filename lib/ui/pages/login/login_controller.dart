@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pay_parking/data/login_firebase/auth_firebase.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
@@ -25,6 +26,7 @@ class LoginController extends GetxController {
       );
       Get.offNamed(RouteNames.verifyEmail);
       //Get.offNamed(RouteNames.home); // home ASI NAVEGO
+
     } on FirebaseAuthException catch (e) {
       Get.showSnackbar(ErrorSnackbar(e.message ?? e.code));
     }

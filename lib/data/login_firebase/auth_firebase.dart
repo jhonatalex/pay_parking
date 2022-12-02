@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../domain/repositories/auth_repository.dart';
 
 class AuthFirebase implements AuthRepository {
@@ -32,7 +33,12 @@ class AuthFirebase implements AuthRepository {
     return FirebaseAuth.instance.sendPasswordResetEmail(email: username);
   }
 
-// ignore: todo
-//TODO RESET EMAIL GOOGLE FACE
-
+  //GOOGLE
+  @override
+  Future<UserCredential> signInGoogle(googleAuth) {
+    return FirebaseAuth.instance.signInWithCredential(
+      GoogleAuthProvider.credential(
+          idToken: googleAuth.idToken, accessToken: googleAuth.accessToken),
+    );
+  }
 }
