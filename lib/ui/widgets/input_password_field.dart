@@ -2,12 +2,19 @@
 
 import 'package:flutter/material.dart';
 
-class PasswordField extends StatelessWidget {
+class PasswordField extends StatefulWidget {
   String textButton = "";
   TextEditingController passwordController;
 
   PasswordField(this.textButton, this.passwordController, {Key? key})
       : super(key: key);
+
+  @override
+  State<PasswordField> createState() => _PasswordFieldState();
+}
+
+class _PasswordFieldState extends State<PasswordField> {
+  bool isHidden = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,23 +31,27 @@ class PasswordField extends StatelessWidget {
                 style: BorderStyle.solid),
             color: const Color.fromARGB(76, 250, 250, 250)),
         child: TextFormField(
-          controller: passwordController,
-          obscureText: true,
+          controller: widget.passwordController,
+          obscureText: isHidden,
           //maxLength: 8,
           decoration: InputDecoration(
             //filled: true,
             border: InputBorder.none,
             icon: const Icon(Icons.lock_outline),
-            labelText: textButton,
+            hintText: widget.textButton,
             //helperText: "Ingrese 8 dígitos",
             suffixIcon: IconButton(
-              onPressed: () {},
+              onPressed: togglePasswordVisibility,
               hoverColor: Colors.transparent,
-              icon: const Icon(
-                Icons.visibility_off,
-              ),
+              icon: isHidden
+                  ? const Icon(Icons.visibility_off)
+                  : const Icon(
+                      Icons.visibility,
+                    ),
             ),
           ),
         ));
   }
+
+  void togglePasswordVisibility() => setState(() => isHidden = !isHidden);
 }
