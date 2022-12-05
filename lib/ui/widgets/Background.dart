@@ -19,7 +19,7 @@ class Background extends StatelessWidget {
           child: Container(
               height: 350,
               decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 231, 231, 233))))
+                  color: Color.fromARGB(255, 231, 231, 233)))),
     ]);
     return stackBackground;
   }

@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 
-class InputNameField extends StatelessWidget {
+class InputTextField extends StatelessWidget {
   String textButton = "";
+  Icon icon;
 
-  InputNameField(this.textButton, {Key? key}) : super(key: key);
+  InputTextField(this.textButton, this.icon, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class InputNameField extends StatelessWidget {
               color: Colors.black,
               fontWeight: FontWeight.bold),
           //filled: true,
-          icon: const Icon(Icons.email),
+          icon: icon,
           //hintText: "",
           labelText: textButton,
         ),

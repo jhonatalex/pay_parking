@@ -33,6 +33,7 @@ final appBar = AppBar(
             inicial,
             style: const TextStyle(color: Colors.white),
           ),
+
           //backgroundImage: AssetImage("assets/img/jhonatan_mejias.jpg")
         ),
         itemBuilder: (context) {

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -24,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
-        // fontFamily: "Lato", // el tipo de fuente elegida
+        fontFamily: "Lato", // el tipo de fuente elegida
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
         /*textTheme: TextTheme(
              titleMedium: TextStyle(

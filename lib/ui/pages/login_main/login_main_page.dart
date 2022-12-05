@@ -3,8 +3,6 @@ import 'package:pay_parking/ui/widgets/Background.dart';
 import 'package:pay_parking/ui/widgets/button_less_background.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
 import '../../widgets/button_with_background2.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginMainPage extends StatelessWidget {
   const LoginMainPage({Key? key}) : super(key: key);
@@ -21,57 +19,71 @@ class LoginMainPage extends StatelessWidget {
         )));
 
     final logoRss = Container(
-        padding: const EdgeInsets.only(top: 8.0),
-        width: 150,
-        child: Row(children: [
-          Container(
-            width: 37,
-            height: 37,
-            margin: const EdgeInsets.only(right: 10.0),
-            color: const Color.fromARGB(255, 80, 80, 80),
-            child: IconButton(
-              color: Colors.white,
-              icon: const Icon(FontAwesomeIcons.google),
-              onPressed: () {},
+      margin: const EdgeInsets.only(top: 10.0),
+      width: 220.0,
+      height: 45.0,
+      color: Theme.of(context).primaryColor,
+      child: Stack(
+        children: [
+          Center(
+            child: Container(
+              padding: const EdgeInsets.only(
+                left: 30,
+              ),
+              child: const Text("Iniciar con Google",
+                  style: TextStyle(
+                      fontFamily: "Lato",
+                      fontSize: 18.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold)),
             ),
           ),
-          SignInButton(Buttons.Facebook, mini: true, onPressed: () {}),
-          SignInButton(Buttons.Email, mini: true, onPressed: () {})
-        ]));
+          Container(
+            margin: const EdgeInsets.all(2),
+            child: Image.asset(
+              "assets/img/google.png",
+            ),
+          ),
+          TextButton(
+              onPressed: () {},
+              child: Container(
+                color: Colors.transparent,
+              ))
+        ],
+      ),
+    );
 
     final cardLogin = Center(
         child: Stack(
       children: [
         const CardContainer(),
-        Container(
-          margin: const EdgeInsets.only(top: 50.0),
-          child: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Flexible(child: logo),
-                  ButtonWithBackground2("Ingresar"),
-                  ButtonLessBackground("Crear Cuenta"),
-                  Container(
-                    margin: const EdgeInsets.only(top: 15.0),
-                    child: const Text("___________ O ingrese con __________",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14.0,
-                            fontFamily: "Lato",
-                            fontWeight: FontWeight.bold)),
-                  ),
-                  logoRss
-                ]),
-          ),
+        Center(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Flexible(child: logo),
+                const SizedBox(height: 40),
+                ButtonWithBackground2("Ingresar"),
+                ButtonLessBackground("Crear Cuenta"),
+                Container(
+                  margin: const EdgeInsets.only(top: 15.0),
+                  child: const Text("___________ O ingrese con __________",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14.0,
+                          fontFamily: "Lato",
+                          fontWeight: FontWeight.bold)),
+                ),
+                logoRss
+              ]),
         )
       ],
     ));
 
     return Scaffold(
       body: Stack(
-        children: [const Background(), cardLogin],
+        children: [BackgroundImagen("assets/img/fondo-home.jpg"), cardLogin],
       ),
     );
   }

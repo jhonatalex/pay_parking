@@ -27,6 +27,9 @@ class _HomePageState extends State<HomePage> {
             Icons.bluetooth, "ABRIR BARRERA", const OpenBarrierPage()),
         ButtonBlueWithIcon(
             Icons.local_parking, "ESTACIONAMIENTOS", const OpenBarrierPage()),
+        ButtonBlueWithIcon(
+            Icons.monetization_on, "RECARGA", const OpenBarrierPage()),
+        ButtonBlueWithIcon(Icons.wallet, "BILLETERA", const OpenBarrierPage()),
         /*
         ButtonBlueWithIcon(
             Icons.monetization_on, "RECARGA", GradientBlue, Colors.blue),
@@ -88,46 +91,50 @@ class _HomePageState extends State<HomePage> {
               children: [cardTarjet])
         ]));
 
-    final content = Container(
-      color: const Color.fromARGB(111, 247, 247, 247),
-      child: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 24,
-            ),
-            Text(
-              "Iniciaste sesión como",
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(),
-            Text(
-              user.email!,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            ElevatedButton.icon(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
+    final content = ListView(
+      children: [
+        Center(
+          child: Container(
+            color: const Color.fromARGB(111, 247, 247, 247),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 24,
+                ),
+                Text(
+                  "Iniciaste sesión como",
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(),
+                Text(
+                  user.email!,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                ElevatedButton.icon(
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
 
-                  Get.offNamed(RouteNames.loginMain);
-                },
-                icon: Icon(Icons.arrow_back),
-                label: Text("Sign Out")),
-            doSpace10,
-            SizedBox(
-              width: 280,
-              child: const Text("Funciones",
-                  style: TextStyle(fontFamily: "Lato", fontSize: 14.0)),
+                      Get.offNamed(RouteNames.loginMain);
+                    },
+                    icon: Icon(Icons.arrow_back),
+                    label: Text("Sign Out")),
+                doSpace10,
+                SizedBox(
+                  width: 280,
+                  child: const Text("Funciones",
+                      style: TextStyle(fontFamily: "Lato", fontSize: 14.0)),
+                ),
+                funtions,
+                doSpace10,
+                tarjets
+              ],
             ),
-            funtions,
-            doSpace10,
-            tarjets
-          ],
+          ),
         ),
-      ),
+      ],
     );
 
     return Scaffold(
