@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/data/login_firebase/auth_firebase.dart';
 import 'package:pay_parking/ui/pages/home/home_page.dart';
 import 'package:pay_parking/ui/pages/login/login_page.dart';
 import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
 import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/pages/register/register_page.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
+
+String inicial = currentUser.email!.substring(0, 1).toUpperCase();
+String userName = currentUser.email!.toString();
+var userEmail = currentUser.email!.toString();
+var userPicturePath =
+    "assets/img/jhonatan_mejias.jpg"; //currentUser.email!.toString();
 
 class DrawerItems extends StatelessWidget {
   const DrawerItems({Key? key}) : super(key: key);
@@ -27,19 +34,18 @@ class DrawerItems extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     CircleAvatar(
                         radius: 45,
-                        backgroundImage:
-                            AssetImage("assets/img/jhonatan_mejias.jpg")),
-                    Text("Jhonatan Mejias",
-                        style: TextStyle(
+                        backgroundImage: AssetImage(userPicturePath)),
+                    Text("Nombre $userName", // "Jhonatan Mejias",
+                        style: const TextStyle(
                             fontFamily: "Lato",
                             fontSize: 16.0,
                             color: Colors.black,
                             fontWeight: FontWeight.bold)),
-                    Text("jhonathan@gmail.com",
-                        style: TextStyle(
+                    Text(userEmail,
+                        style: const TextStyle(
                             fontFamily: "Lato",
                             fontSize: 14.0,
                             color: Colors.black)),

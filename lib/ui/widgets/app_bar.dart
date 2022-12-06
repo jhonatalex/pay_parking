@@ -1,24 +1,24 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pay_parking/data/login_firebase/auth_firebase.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 
-var user = FirebaseAuth.instance.currentUser!;
-String inicial = user.email!.substring(0, 1).toUpperCase();
+String inicial = currentUser.email!.substring(0, 1).toUpperCase();
 
-final appBar = AppBar(
+var appBar = AppBar(
   backgroundColor: Colors.white,
   foregroundColor: Colors.black,
   title: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.start,
     children: [
       const Text("Bienvenido...",
           style: TextStyle(
               fontFamily: "Lato",
-              fontSize: 18.0,
-              color: Colors.black,
+              fontSize: 20.0,
+              color: Color.fromARGB(255, 80, 70, 70),
               fontWeight: FontWeight.bold)),
-      Text(user.email!,
+      Text(currentUser.email!,
           style: const TextStyle(
               fontFamily: "Lato",
               fontSize: 14.0,
@@ -27,7 +27,19 @@ final appBar = AppBar(
     ],
   ),
   actions: <Widget>[
-    PopupMenuButton(
+    IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+    const CircleImage(),
+  ],
+);
+
+class CircleImage extends StatelessWidget {
+  const CircleImage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton(
         icon: CircleAvatar(
           child: Text(
             inicial,
@@ -73,6 +85,6 @@ final appBar = AppBar(
 
             Get.offNamed(RouteNames.loginMain);
           }
-        }),
-  ],
-);
+        });
+  }
+}

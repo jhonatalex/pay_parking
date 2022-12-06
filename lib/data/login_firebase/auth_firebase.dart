@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../domain/repositories/auth_repository.dart';
 
+final currentUser = FirebaseAuth.instance.currentUser!;
+
 class AuthFirebase implements AuthRepository {
   const AuthFirebase();
 
