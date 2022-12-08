@@ -4,6 +4,7 @@ import 'package:pay_parking/ui/pages/forgot_password/forgot_password_page.dart';
 import 'package:pay_parking/ui/pages/home/home_binding.dart';
 import 'package:pay_parking/ui/pages/login/login_binding.dart';
 import 'package:pay_parking/ui/pages/login/login_page.dart';
+import 'package:pay_parking/ui/pages/login_main/intro_screen_page.dart';
 import 'package:pay_parking/ui/pages/login_main/login_main_binding.dart';
 import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
 import 'package:pay_parking/ui/pages/register/register_binding.dart';
@@ -12,6 +13,7 @@ import 'package:pay_parking/ui/pages/verify_email/verify_email_binding.dart';
 import 'package:pay_parking/ui/pages/verify_email/verify_email_page.dart';
 
 import '../pages/home/home_page.dart';
+import '../pages/login_main/intro_binding.dart';
 import '../pages/splash/splash_binding.dart';
 import '../pages/splash/splash_page.dart';
 import 'route_names.dart';
@@ -43,6 +45,12 @@ class RoutePages {
         page: () => const LoginMainPage(),
         transition: Transition.cupertino,
         binding: const LoginMainBinding(),
+      ),
+      GetPage(
+        name: RouteNames.intro,
+        page: () => const IntroScreen(),
+        transition: Transition.cupertino,
+        binding: const IntroBinding(),
       ),
       GetPage(
         name: RouteNames.register,

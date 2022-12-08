@@ -9,7 +9,7 @@ import '../../../data/login_firebase/auth_repositoryImp.dart';
 import '../../routes/route_names.dart';
 import '../../widgets/error_snackbar.dart';
 
-class LoginMainController extends GetxController {
+class IntroScreenController extends GetxController {
   final googleController = Get.put(GoogleSignInController());
   final _authRepository = Get.find<AuthRepository>();
 

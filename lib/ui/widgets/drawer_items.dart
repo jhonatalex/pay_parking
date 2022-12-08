@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pay_parking/data/login_firebase/auth_firebase.dart';
+
+import 'package:get/get.dart';
+import 'package:pay_parking/app/controllers/auth_controller.dart';
 import 'package:pay_parking/ui/pages/home/home_page.dart';
 import 'package:pay_parking/ui/pages/login/login_page.dart';
 import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
@@ -7,9 +9,6 @@ import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/pages/register/register_page.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 
-String inicial = currentUser.email!.substring(0, 1).toUpperCase();
-String userName = currentUser.email!.toString();
-var userEmail = currentUser.email!.toString();
 var userPicturePath =
     "assets/img/jhonatan_mejias.jpg"; //currentUser.email!.toString();
 
@@ -22,6 +21,8 @@ class DrawerItems extends StatelessWidget {
       children: [
         InkWell(
             onTap: () {
+              Get.find<AuthController>().signOut();
+
               /* Navigator.pop(context); para cerrar menu
           Navigator.of(context)
               .push(MaterialPageRoute(builder: ((context) => const Login())));
@@ -38,13 +39,13 @@ class DrawerItems extends StatelessWidget {
                     CircleAvatar(
                         radius: 45,
                         backgroundImage: AssetImage(userPicturePath)),
-                    Text("Nombre $userName", // "Jhonatan Mejias",
+                    Text("Nombre vv", // "Jhonatan Mejias",
                         style: const TextStyle(
                             fontFamily: "Lato",
                             fontSize: 16.0,
                             color: Colors.black,
                             fontWeight: FontWeight.bold)),
-                    Text(userEmail,
+                    Text("userEmail",
                         style: const TextStyle(
                             fontFamily: "Lato",
                             fontSize: 14.0,

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:pay_parking/ui/pages/login_main/login_main_controller.dart';
 import 'package:pay_parking/ui/widgets/Background.dart';
 import 'package:pay_parking/ui/widgets/button_less_background.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
@@ -9,6 +12,8 @@ class LoginMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final LoginMainController controller = Get.find<LoginMainController>();
+
     final logo = Container(
         width: 200,
         height: 200,

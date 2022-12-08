@@ -17,7 +17,7 @@ class Background extends StatelessWidget {
       ClipPath(
           clipper: WaveClipper(), //Puedes usar WaveClipper oWaveClipper1
           child: Container(
-              height: 350,
+              height: 520,
               decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 231, 231, 233)))),
     ]);

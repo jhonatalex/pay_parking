@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pay_parking/app/controllers/my_user_controller.dart';
 import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
@@ -10,7 +11,7 @@ import 'package:pay_parking/ui/widgets/drawer_items.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 import 'package:pay_parking/ui/widgets/app_bar.dart';
 
-var user = FirebaseAuth.instance.currentUser!;
+import '../../../app/controllers/auth_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,6 +23,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final userController = Get.put(MyUserController());
+
     final funtions = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -93,55 +96,52 @@ class _HomePageState extends State<HomePage> {
               children: [cardTarjet])
         ]));
 
-    final content = ListView(
-      children: [
-        Center(
-          child: Container(
-            color: const Color.fromARGB(111, 247, 247, 247),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 24,
-                ),
-                Text(
-                  "Iniciaste sesión como",
-                  style: TextStyle(fontSize: 16),
-                ),
-                SizedBox(),
-                Text(
-                  user.email!,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                ElevatedButton.icon(
-                    onPressed: () {
-                      FirebaseAuth.instance.signOut();
-
-                      Get.offNamed(RouteNames.loginMain);
-                    },
-                    icon: Icon(Icons.arrow_back),
-                    label: Text("Sign Out")),
-                doSpace10,
-                SizedBox(
-                  width: 280,
-                  child: const Text("Funciones",
-                      style: TextStyle(fontFamily: "Lato", fontSize: 14.0)),
-                ),
-                funtions,
-                doSpace10,
-                tarjets
-              ],
+    final content = Container(
+      color: const Color.fromARGB(111, 247, 247, 247),
+      child: Center(
+        child: Column(children: [
+          SizedBox(
+            height: 24,
+          ),
+          Text(
+            "Iniciaste sesión como",
+            style: TextStyle(fontSize: 16),
+          ),
+          SizedBox(),
+          Text(
+            Get.find<AuthController>().authUser.value?.uid ?? '',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-      ],
+          ElevatedButton.icon(
+              onPressed: () {
+                Get.find<AuthController>().signOut();
+                //FirebaseAuth.instance.signOut();
+                // Get.offNamed(RouteNames.loginMain);
+              },
+              icon: Icon(Icons.arrow_back),
+              label: Text("Sign Out")),
+          doSpace10,
+          SizedBox(
+            width: 280,
+            child: const Text("Funciones",
+                style: TextStyle(fontFamily: "Lato", fontSize: 14.0)),
+          ),
+        ]),
+      ),
     );
 
     return Scaffold(
       appBar: appBar,
       body: content,
+      /*Obx(() {
+        //if (userController.isLoading.value) {
+         // return const Center(child: CircularProgressIndicator());
+        //}
+        //return content;
+      }),*/
       drawer: Drawer(
         child: DrawerItems(),
       ),

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "590778202045-qcdme9ufc43keioif4761cfiq77hr7k6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pay_parking",
+            "certificate_hash": "9bd554399eb2e5e6902b74ce50e08192bcaf0685"
+          }
+        },
+        {
           "client_id": "590778202045-sp02bpkt8l2cn4hqbdf8n42ojk55e9dm.apps.googleusercontent.com",
           "client_type": 3
         }

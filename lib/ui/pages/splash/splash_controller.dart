@@ -2,9 +2,12 @@ import 'package:get/get.dart';
 import 'package:pay_parking/app/controllers/auth_controller.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 
+import '../../../data/login_firebase/auth_repositoryAbst.dart';
+
 class SplashController extends GetxController {
   SplashController({required this.authController});
 
+  final _authRepository = Get.find<AuthRepository>();
   final AuthController authController;
 
   final RxBool _loading = RxBool(true);
@@ -18,7 +21,7 @@ class SplashController extends GetxController {
   Future<void> _init() async {
     await Future.delayed(const Duration(seconds: 5));
     _loading(false);
-    if (authController.currentUser != null) {
+    if (authController.authUser != null) {
       Get.offNamed(RouteNames.home);
     } else {
       Get.offNamed(RouteNames.loginMain);
