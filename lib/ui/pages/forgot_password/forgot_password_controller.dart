@@ -1,13 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:pay_parking/data/login_firebase/auth_firebase.dart';
+import 'package:pay_parking/data/login_firebase/auth_repositoryImp.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/error_snackbar.dart';
+
+import '../../../data/login_firebase/auth_repositoryAbst.dart';
 
 class ForgotPasswordController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   // final TextEditingController passwordController = TextEditingController();
+
+  final _authRepository = Get.find<AuthRepository>();
 
   @override
   void onClose() {
@@ -30,7 +34,7 @@ class ForgotPasswordController extends GetxController {
   }*/
   void resetPassword() async {
     try {
-      await const AuthFirebase()
+      await _authRepository
           .forgotPasswordWithEmail(emailController.text.trim());
       Get.showSnackbar(
           const ErrorSnackbar("Correo de recuperación de contraseña enviado"));

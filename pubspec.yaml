@@ -34,12 +34,29 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  http: ^0.13.5
+  flutter_signin_button: ^2.0.0-nullsafety.0
+  font_awesome_flutter: ^9.0.0-nullsafety
+  flutter_launcher_icons: "^0.11.0"
+
+
+
+  #FIREBASE
   firebase_core: ^2.1.1
   cloud_firestore:
   firebase_auth:
   google_sign_in: ^5.3.0
+  firebase_storage: ^11.0.6
+
+  #UTIL
+  http: ^0.13.5
   get: ^4.6.5  
+  equatable: ^2.0.5
+  page_indicator: ^0.4.1
+  flutter_hooks: 
+  image_picker: ^0.8.4+2
+  cached_network_image: ^3.1.0
+
+
 
 dev_dependencies:
   flutter_test:
@@ -50,10 +67,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
-  flutter_signin_button: ^2.0.0-nullsafety.0
-  font_awesome_flutter: ^9.0.0-nullsafety
 
-  flutter_launcher_icons: "^0.11.0"
+
 flutter_icons:
   android: "launcher_icon"
   ios: true
@@ -86,6 +101,15 @@ flutter:
     - assets/img/bancamiga_logo.png
     - assets/img/barrera_only.png
     - assets/img/DNA.gif
+    - assets/img/barrera-auto.png
+    - assets/img/EquiposParking.png
+    - assets/img/pago_tike.png
+    - assets/img/blank-profile.png
+    - assets/icon/icon_email.png
+    - assets/icon/icon_facebook.png
+    - assets/icon/icon_google.png
+
+
 
   fonts:
     - family: Lato

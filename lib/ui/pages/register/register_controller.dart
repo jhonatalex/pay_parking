@@ -1,13 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:pay_parking/data/login_firebase/auth_firebase.dart';
+import 'package:pay_parking/data/login_firebase/auth_repositoryAbst.dart';
+import 'package:pay_parking/data/login_firebase/auth_repositoryImp.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/error_snackbar.dart';
 
 class RegisterController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  final _authRepository = Get.find<AuthRepository>();
 
   @override
   void onClose() {
@@ -18,7 +21,7 @@ class RegisterController extends GetxController {
 
   void singUp() async {
     try {
-      await const AuthFirebase().createUserWithEmail(
+      await _authRepository.createUserWithEmail(
         emailController.text.trim(),
         passwordController.text,
       );
