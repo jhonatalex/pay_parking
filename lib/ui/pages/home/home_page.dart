@@ -3,12 +3,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pay_parking/app/controllers/my_user_controller.dart';
 import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 import 'package:pay_parking/ui/widgets/app_bar.dart';
+
+import '../../../app/controllers/auth_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,6 +23,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final userController = Get.put(MyUserController());
+
     final funtions = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -102,7 +107,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(),
             Text(
-              user.email!,
+              Get.find<AuthController>().authUser.value?.uid ?? '',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -110,9 +115,9 @@ class _HomePageState extends State<HomePage> {
             ),
             ElevatedButton.icon(
                 onPressed: () {
-                  FirebaseAuth.instance.signOut();
-
-                  Get.offNamed(RouteNames.loginMain);
+                  Get.find<AuthController>().signOut();
+                  //FirebaseAuth.instance.signOut();
+                  // Get.offNamed(RouteNames.loginMain);
                 },
                 icon: Icon(Icons.arrow_back),
                 label: Text("Sign Out")),
@@ -133,6 +138,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: appBar,
       body: content,
+      /*Obx(() {
+        //if (userController.isLoading.value) {
+         // return const Center(child: CircularProgressIndicator());
+        //}
+        //return content;
+      }),*/
       drawer: Drawer(
         child: DrawerItems(),
       ),

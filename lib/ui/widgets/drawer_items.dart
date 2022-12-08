@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:pay_parking/app/controllers/auth_controller.dart';
 import 'package:pay_parking/ui/pages/home/home_page.dart';
 import 'package:pay_parking/ui/pages/login/login_page.dart';
 import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
@@ -15,6 +17,8 @@ class DrawerItems extends StatelessWidget {
       children: [
         InkWell(
             onTap: () {
+              Get.find<AuthController>().signOut();
+
               /* Navigator.pop(context); para cerrar menu
           Navigator.of(context)
               .push(MaterialPageRoute(builder: ((context) => const Login())));
