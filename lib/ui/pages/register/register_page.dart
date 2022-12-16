@@ -12,6 +12,7 @@ import 'package:pay_parking/ui/widgets/input_password_field.dart';
 import '../../../app/controllers/my_user_controller.dart';
 import '../../widgets/Background.dart';
 import '../../widgets/card_transparent.dart';
+import '../../widgets/input_name_field.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -49,29 +50,6 @@ class _RegisterState extends State<RegisterPage> {
           image: AssetImage("assets/img/ParKiApp_logo.png"),
         )));
 
-    final imageObx = Obx(() {
-      Widget image = Image.asset(
-        'assets/blank-profile.png',
-        fit: BoxFit.fill,
-      );
-
-      if (userController.pickedImage.value != null) {
-        image = Image.file(
-          userController.pickedImage.value!,
-          fit: BoxFit.fill,
-        );
-      } else if (userController.user.value?.image?.isNotEmpty == true) {
-        image = CachedNetworkImage(
-          imageUrl: userController.user.value!.image!,
-          progressIndicatorBuilder: (_, __, progress) =>
-              CircularProgressIndicator(value: progress.progress),
-          errorWidget: (_, __, ___) => const Icon(Icons.error),
-          fit: BoxFit.fill,
-        );
-      }
-      return image;
-    });
-
     final cardLogin = Center(
         child: Stack(
       children: [
@@ -90,32 +68,10 @@ class _RegisterState extends State<RegisterPage> {
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 30)),
-              const Text("Rellena el formulario para crear tu cuenta",
+              const Text("Ingresa un Correo y Contraseña para crear tu cuenta",
                   style: TextStyle(color: Colors.black, fontSize: 14)),
               const SizedBox(
                 height: 10,
-              ),
-
-              //IMAGEN PIKER
-
-              GestureDetector(
-                onTap: () async {
-                  final pickedImage =
-                      await picker.pickImage(source: ImageSource.gallery);
-                  if (pickedImage != null) {
-                    Get.find<MyUserController>()
-                        .setImage(File(pickedImage.path));
-                  }
-                },
-                child: Center(
-                  child: ClipOval(
-                    child: SizedBox(
-                      width: 150,
-                      height: 150,
-                      child: imageObx,
-                    ),
-                  ),
-                ),
               ),
 
               const SizedBox(height: 8),
@@ -126,6 +82,11 @@ class _RegisterState extends State<RegisterPage> {
               //CAMPO DE CONTRASEÑA
               PasswordField("Contraseña", controller.passwordController),
               const SizedBox(),
+              //CAMPO DE CONTRASEÑA
+              PasswordField(
+                  "Repetir Contraseña", controller.passwordController),
+              const SizedBox(),
+
               //BOTON DE
               Container(
                   margin: const EdgeInsets.only(top: 20.0),
@@ -137,7 +98,7 @@ class _RegisterState extends State<RegisterPage> {
                   child: Center(
                     child: TextButton(
                         onPressed: () {
-                          //controller.singUp();
+                          controller.singUp();
 
                           ///userController.saveMyUser();
                           /* Navigator.push(

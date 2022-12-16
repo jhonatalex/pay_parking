@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:pay_parking/app/controllers/auth_controller.dart';
 import 'package:pay_parking/ui/pages/home/home_page.dart';
 import 'package:pay_parking/ui/pages/login/login_page.dart';
-import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
+
 import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/pages/register/register_page.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
+
+import '../pages/intro_main/intro_screen_page.dart';
 
 class DrawerItems extends StatelessWidget {
   const DrawerItems({Key? key}) : super(key: key);
@@ -51,7 +53,7 @@ class DrawerItems extends StatelessWidget {
             )),
         IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            //Navigator.pop(context);
           },
           icon: const Icon(Icons.cancel_outlined),
           color: Colors.red,
@@ -81,8 +83,6 @@ class DrawerItems extends StatelessWidget {
           trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
           onTap: () {
             //Navigator.pop(context); para cerrar menu
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: ((context) => const LoginPage())));
           },
         ),
         ListTile(
@@ -92,8 +92,8 @@ class DrawerItems extends StatelessWidget {
           leading: const Icon(Icons.login, color: Colors.blue),
           trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: ((context) => const LoginMainPage())));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: ((context) => const IntroScreen())));
           },
         ),
         ListTile(

@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../pages/login_main/login_main_controller.dart';
-
 class ButtonLessBackground extends StatelessWidget {
   String textButton = "";
 
@@ -12,8 +10,6 @@ class ButtonLessBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoginMainController controller = Get.find<LoginMainController>();
-
     return Container(
         margin: const EdgeInsets.only(top: 20.0),
         width: 220.0,
@@ -28,8 +24,6 @@ class ButtonLessBackground extends StatelessWidget {
         child: Center(
           child: TextButton(
               onPressed: () {
-                controller.goToRegister();
-
                 /*
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => page));*/

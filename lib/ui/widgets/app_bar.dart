@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 
+import '../../app/controllers/auth_controller.dart';
+
 var user = FirebaseAuth.instance.currentUser!;
 String inicial = user.email!.substring(0, 1).toUpperCase();
 
@@ -42,7 +44,7 @@ final appBar = AppBar(
                 child: Row(
                   children: const [
                     Icon(Icons.person),
-                    Text("  My Account"),
+                    Text("Mi Cuenta"),
                   ],
                 )),
             PopupMenuItem<int>(
@@ -50,7 +52,7 @@ final appBar = AppBar(
                 child: Row(
                   children: const [
                     Icon(Icons.settings),
-                    Text("  Settings"),
+                    Text("Settings"),
                   ],
                 )),
             PopupMenuItem<int>(
@@ -58,7 +60,7 @@ final appBar = AppBar(
               child: Row(
                 children: const [
                   Icon(Icons.output),
-                  Text("  Logout"),
+                  Text("Cerrar Sesion"),
                 ],
               ),
             ),
@@ -66,11 +68,11 @@ final appBar = AppBar(
         },
         onSelected: (value) {
           if (value == 0) {
+            Get.offNamed(RouteNames.profile);
           } else if (value == 1) {
           } else if (value == 2) {
-            FirebaseAuth.instance.signOut();
-
-            Get.offNamed(RouteNames.loginMain);
+            Get.find<AuthController>().signOut();
+            Get.offNamed(RouteNames.intro);
           }
         }),
   ],
