@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/ui/pages/paid/paid_page.dart';
 import 'package:pay_parking/ui/widgets/app_bar_back.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
 
@@ -56,6 +57,12 @@ class OpenBarrierPage extends StatelessWidget {
         imageBarrier,
         imageBluetooh,
         textOpen,
+        ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => PaidPage()));
+            },
+            child: const Text('Pago exitoso'))
         //ButtonWithBackground("Entrar", Home())
       ])),
       drawer: const Drawer(
