@@ -34,12 +34,8 @@ class _HomePageState extends State<HomePage> {
             Icons.local_parking, "ESTACIONAMIENTOS", const OpenBarrierPage()),
         ButtonBlueWithIcon(
             Icons.monetization_on, "RECARGA", const OpenBarrierPage()),
-        ButtonBlueWithIcon(Icons.wallet, "BILLETERA", const OpenBarrierPage()),
-        /*
         ButtonBlueWithIcon(
-            Icons.monetization_on, "RECARGA", GradientBlue, Colors.blue),
-        ButtonBlueWithIcon(Icons.account_balance_wallet, "BILLETERA",
-            GradientBlue, Colors.blue),*/
+            Icons.account_balance_wallet, "BILLETERA", const OpenBarrierPage())
       ],
     );
 
@@ -99,37 +95,21 @@ class _HomePageState extends State<HomePage> {
     final content = Container(
       color: const Color.fromARGB(111, 247, 247, 247),
       child: Center(
-        child: Column(children: [
-          SizedBox(
-            height: 24,
-          ),
-          Text(
-            "Iniciaste sesión como",
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(),
-          Text(
-            Get.find<AuthController>().authUser.value?.uid ?? '',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 24,
             ),
-          ),
-          ElevatedButton.icon(
-              onPressed: () {
-                Get.find<AuthController>().signOut();
-                //FirebaseAuth.instance.signOut();
-                // Get.offNamed(RouteNames.loginMain);
-              },
-              icon: Icon(Icons.arrow_back),
-              label: Text("Sign Out")),
-          doSpace10,
-          SizedBox(
-            width: 280,
-            child: const Text("Funciones",
-                style: TextStyle(fontFamily: "Lato", fontSize: 14.0)),
-          ),
-        ]),
+            SizedBox(
+              width: 280,
+              child: const Text("Funciones",
+                  style: TextStyle(fontFamily: "Lato", fontSize: 14.0)),
+            ),
+            funtions,
+            doSpace10,
+            tarjets
+          ],
+        ),
       ),
     );
 

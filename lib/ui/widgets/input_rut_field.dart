@@ -2,12 +2,11 @@
 
 import 'package:flutter/material.dart';
 
-class InputNameField extends StatelessWidget {
+class RutField extends StatelessWidget {
   String textButton = "";
-  TextEditingController nameController;
+  TextEditingController rutController;
 
-  InputNameField(this.textButton, this.nameController, {Key? key})
-      : super(key: key);
+  RutField(this.textButton, this.rutController, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +24,13 @@ class InputNameField extends StatelessWidget {
               style: BorderStyle.solid),
           color: const Color.fromARGB(76, 250, 250, 250)),
       child: TextField(
-        controller: nameController,
-        restorationId: 'name_field',
+        controller: rutController,
+        restorationId: 'rut_field',
         decoration: const InputDecoration(
             border: InputBorder.none,
             filled: false,
-            icon: Icon(Icons.account_circle_sharp),
-            hintText: "Nombre"),
+            icon: Icon(Icons.numbers_rounded),
+            hintText: "Rut"),
       ),
     );
   }

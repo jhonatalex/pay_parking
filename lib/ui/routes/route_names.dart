@@ -9,4 +9,5 @@ class RouteNames {
   static const String openBarrier = '/open-barrier';
   static const String forgotPassword = '/forgot-password';
   static const String verifyEmail = '/verify-email';
+  static const String profile = '/profile';
 }
