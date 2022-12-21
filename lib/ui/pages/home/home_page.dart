@@ -32,11 +32,10 @@ class _HomePageState extends State<HomePage> {
             Icons.bluetooth, "ABRIR BARRERA", const OpenBarrierPage()),
         ButtonBlueWithIcon(
             Icons.local_parking, "ESTACIONAMIENTOS", const OpenBarrierPage()),
-        /*
         ButtonBlueWithIcon(
-            Icons.monetization_on, "RECARGA", GradientBlue, Colors.blue),
-        ButtonBlueWithIcon(Icons.account_balance_wallet, "BILLETERA",
-            GradientBlue, Colors.blue),*/
+            Icons.monetization_on, "RECARGA", const OpenBarrierPage()),
+        ButtonBlueWithIcon(
+            Icons.account_balance_wallet, "BILLETERA", const OpenBarrierPage())
       ],
     );
 
@@ -101,27 +100,6 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 24,
             ),
-            Text(
-              "Iniciaste sesión como",
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(),
-            Text(
-              Get.find<AuthController>().authUser.value?.uid ?? '',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            ElevatedButton.icon(
-                onPressed: () {
-                  Get.find<AuthController>().signOut();
-                  //FirebaseAuth.instance.signOut();
-                  // Get.offNamed(RouteNames.loginMain);
-                },
-                icon: Icon(Icons.arrow_back),
-                label: Text("Sign Out")),
-            doSpace10,
             SizedBox(
               width: 280,
               child: const Text("Funciones",

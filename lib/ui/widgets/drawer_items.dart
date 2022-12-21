@@ -1,18 +1,51 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pay_parking/app/controllers/auth_controller.dart';
 import 'package:pay_parking/ui/pages/home/home_page.dart';
 import 'package:pay_parking/ui/pages/login/login_page.dart';
-import 'package:pay_parking/ui/pages/login_main/login_main_page.dart';
+
 import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/pages/register/register_page.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
+
+import '../../app/controllers/my_user_controller.dart';
+import '../pages/intro_main/intro_screen_page.dart';
+import '../pages/register/register_controller.dart';
 
 class DrawerItems extends StatelessWidget {
   const DrawerItems({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final userController = Get.find<MyUserController>();
+
+    final picker = ImagePicker();
+
+    final imageObx = Obx(() {
+      Widget image = Image.asset(
+        'assets/img/blank-profile.png',
+        fit: BoxFit.fill,
+      );
+
+      if (userController.pickedImage.value != null) {
+        image = Image.file(
+          userController.pickedImage.value!,
+          fit: BoxFit.fill,
+        );
+      } else if (userController.user.value?.image?.isNotEmpty == true) {
+        image = CachedNetworkImage(
+          imageUrl: userController.user.value!.image!,
+          progressIndicatorBuilder: (_, __, progress) =>
+              CircularProgressIndicator(value: progress.progress),
+          errorWidget: (_, __, ___) => const Icon(Icons.error),
+          fit: BoxFit.fill,
+        );
+      }
+      return image;
+    });
+
     final drawerHeader = Stack(
       children: [
         InkWell(
@@ -31,11 +64,25 @@ class DrawerItems extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    CircleAvatar(
-                        radius: 45,
-                        backgroundImage:
-                            AssetImage("assets/img/jhonatan_mejias.jpg")),
+                  children: [
+                    //IMAGEN PIKER
+
+                    GestureDetector(
+                      onTap: () async {
+                        final pickedImage =
+                            picker.pickImage(source: ImageSource.gallery);
+                      },
+                      child: Center(
+                        child: ClipOval(
+                          child: SizedBox(
+                            width: 120,
+                            height: 120,
+                            child: imageObx,
+                          ),
+                        ),
+                      ),
+                    ),
+
                     Text("Jhonatan Mejias",
                         style: TextStyle(
                             fontFamily: "Lato",
@@ -51,7 +98,7 @@ class DrawerItems extends StatelessWidget {
             )),
         IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            //Navigator.pop(context);
           },
           icon: const Icon(Icons.cancel_outlined),
           color: Colors.red,
@@ -81,8 +128,6 @@ class DrawerItems extends StatelessWidget {
           trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
           onTap: () {
             //Navigator.pop(context); para cerrar menu
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: ((context) => const LoginPage())));
           },
         ),
         ListTile(
@@ -92,8 +137,8 @@ class DrawerItems extends StatelessWidget {
           leading: const Icon(Icons.login, color: Colors.blue),
           trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: ((context) => const LoginMainPage())));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: ((context) => const IntroScreen())));
           },
         ),
         ListTile(

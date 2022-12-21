@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/ui/widgets/app_bar_back.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
 
 import '../../widgets/app_bar.dart';
@@ -48,7 +49,7 @@ class OpenBarrierPage extends StatelessWidget {
         ]));
 
     return Scaffold(
-      appBar: appBar,
+      appBar: appBarBack,
       backgroundColor: Colors.white,
       body: Center(
           child: Column(children: [

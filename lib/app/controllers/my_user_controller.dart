@@ -55,7 +55,7 @@ class MyUserController extends GetxController {
     user.value = newUser;
 
     // For testing add delay
-    await Future.delayed(const Duration(seconds: 3));
+    //await Future.delayed(const Duration(seconds: 3));
     await _userRepository.saveMyUser(newUser, pickedImage.value);
     isSaving.value = false;
   }

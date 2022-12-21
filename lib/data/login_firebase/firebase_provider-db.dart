@@ -26,7 +26,7 @@ class FirebaseProvider {
     return null;
   }
 
-//ESCRIBIR BD
+  //GUARDAR EN BD
   Future<void> saveMyUser(MyUser user, File? image) async {
     final ref = firestore.doc('user/${currentUser.uid}');
     if (image != null) {
