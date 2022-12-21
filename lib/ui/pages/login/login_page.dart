@@ -47,15 +47,15 @@ class _LoginState extends State<LoginPage> {
           image: AssetImage("assets/img/ParKiApp_logo.png"),
         )));
 
-    final cardLogin = Center(
-        child: Stack(
+    final cardLogin = Stack(
       children: [
         const CardContainer(),
         Column(
+
             //padding: EdgeInsets.symmetric(horizontal: 90.0),
             // child: Column(
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            //mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const SizedBox(height: 50),
               Flexible(
@@ -99,35 +99,56 @@ class _LoginState extends State<LoginPage> {
                                   fontWeight: FontWeight.bold)),
                         )),
                   )),
-              const Divider(
-                height: 15,
-                thickness: 1,
-                indent: 130,
-                endIndent: 130,
-                color: Colors.black,
+              const SizedBox(
+                height: 20,
               ),
-              TextButton(
-                  onPressed: () {
-                    Get.offNamed(RouteNames.forgotPassword);
-                  },
-                  child: const Text("¿Olvidó su contraseña?",
-                      style: TextStyle(color: Colors.black))),
+              Stack(
+                children: [
+                  const Divider(
+                    height: 15,
+                    thickness: 1,
+                    indent: 130,
+                    endIndent: 130,
+                    color: Colors.black,
+                  ),
+                  Center(
+                    child: TextButton(
+                        onPressed: () {
+                          Get.offNamed(RouteNames.forgotPassword);
+                        },
+                        child: const Text("¿Olvidó su contraseña?",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold))),
+                  ),
+                ],
+              ),
+
               //Solo para navegar porque el botton back no funciona
-              TextButton(
-                  onPressed: () {
-                    Get.offNamed(RouteNames.register);
-                  },
-                  child: const Text("Resgistrarse",
-                      style: TextStyle(color: Colors.black))),
-              TextButton(
-                  onPressed: () {
-                    Get.offNamed(RouteNames.loginMain);
-                  },
-                  child: const Text("Volver",
-                      style: TextStyle(color: Colors.black))),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                      onPressed: () {
+                        Get.offNamed(RouteNames.register);
+                      },
+                      child: const Text("Resgistrarse",
+                          style: TextStyle(
+                              color: Color(0xFFFFDF40),
+                              fontWeight: FontWeight.bold))),
+                  TextButton(
+                      onPressed: () {
+                        Get.offNamed(RouteNames.loginMain);
+                      },
+                      child: const Text("Volver",
+                          style: TextStyle(
+                              color: Color(0xFFFFDF40),
+                              fontWeight: FontWeight.bold))),
+                ],
+              ),
             ])
       ],
-    ));
+    );
 
     return Scaffold(
         body: Stack(

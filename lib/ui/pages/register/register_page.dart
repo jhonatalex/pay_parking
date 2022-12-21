@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:pay_parking/ui/pages/register/register_controller.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/input_email_field.dart';
+import 'package:pay_parking/ui/widgets/input_name_field.dart';
 import 'package:pay_parking/ui/widgets/input_password_field.dart';
 
 import '../../../app/controllers/my_user_controller.dart';
@@ -24,6 +25,9 @@ class RegisterPage extends StatefulWidget {
 class _RegisterState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+
+  bool isChecked = false;
 
   @override
   void dispose() {
@@ -42,8 +46,8 @@ class _RegisterState extends State<RegisterPage> {
     final picker = ImagePicker();
 
     final logo = Container(
-        width: 200,
-        height: 200,
+        width: 100,
+        height: 100,
         decoration: const BoxDecoration(
             image: DecorationImage(
           fit: BoxFit.contain,

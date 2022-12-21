@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pay_parking/app/controllers/auth_controller.dart';
@@ -13,6 +14,9 @@ import 'package:pay_parking/ui/widgets/styles.dart';
 import '../../app/controllers/my_user_controller.dart';
 import '../pages/intro_main/intro_screen_page.dart';
 import '../pages/register/register_controller.dart';
+
+var userPicturePath =
+    "assets/img/jhonatan_mejias.jpg"; //currentUser.email!.toString();
 
 class DrawerItems extends StatelessWidget {
   const DrawerItems({Key? key}) : super(key: key);
@@ -89,8 +93,8 @@ class DrawerItems extends StatelessWidget {
                             fontSize: 16.0,
                             color: Colors.black,
                             fontWeight: FontWeight.bold)),
-                    Text("jhonathan@gmail.com",
-                        style: TextStyle(
+                    Text("userEmail",
+                        style: const TextStyle(
                             fontFamily: "Lato",
                             fontSize: 14.0,
                             color: Colors.black)),
