@@ -57,12 +57,15 @@ class _LoginState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              const SizedBox(height: 50),
               Flexible(
                 //fit: FlexFit.tight, esto da error en una pantalla mas grade
                 child: logo,
               ),
-              const SizedBox(
-                height: 10,
+              const SizedBox(height: 10),
+              const Text(
+                "Iniciar Sesión",
+                style: TextStyle(fontFamily: "raleway", fontSize: 30),
               ),
               //BOTONES
               // CAMPO DE EMAIL
@@ -149,7 +152,7 @@ class _LoginState extends State<LoginPage> {
 
     return Scaffold(
         body: Stack(
-      children: [const Background(), cardLogin],
+      children: [Background(), Flexible(child: cardLogin)],
     ));
   }
 }
