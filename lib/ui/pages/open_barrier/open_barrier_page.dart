@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/pages/paid/paid_page.dart';
-import 'package:pay_parking/ui/widgets/app_bar_back.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
 
 import '../../widgets/app_bar.dart';
+import '../../widgets/app_bar_back.dart';
 
 class OpenBarrierPage extends StatelessWidget {
   const OpenBarrierPage({Key? key}) : super(key: key);
@@ -50,10 +50,12 @@ class OpenBarrierPage extends StatelessWidget {
         ]));
 
     return Scaffold(
-      appBar: appBarBack,
       backgroundColor: Colors.white,
       body: Center(
           child: Column(children: [
+        const AppBarBack(
+          title: "Abrir Barrera",
+        ),
         imageBarrier,
         imageBluetooh,
         textOpen,

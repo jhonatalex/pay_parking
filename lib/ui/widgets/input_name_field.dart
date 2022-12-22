@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../domain/repositories/abstractas/responsive.dart';
+
 class InputNameField extends StatelessWidget {
   String textButton = "";
   TextEditingController nameController;
@@ -12,10 +14,7 @@ class InputNameField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 20.0),
-      padding: const EdgeInsets.only(left: 10.0),
-      width: 220.0,
-      height: 50.0,
+      height: sclW(context) * 45 / 5,
       decoration: BoxDecoration(
           //boxShadow: [ShadowBlack],
           borderRadius: BorderRadius.circular(15.0),
@@ -25,12 +24,18 @@ class InputNameField extends StatelessWidget {
               style: BorderStyle.solid),
           color: const Color.fromARGB(76, 250, 250, 250)),
       child: TextField(
+        style: TextStyle(
+          fontSize: sclW(context) * 5,
+        ),
         controller: nameController,
         restorationId: 'name_field',
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
             border: InputBorder.none,
             filled: false,
-            icon: Icon(Icons.account_circle_sharp),
+            icon: Icon(
+              Icons.account_circle_sharp,
+              size: sclW(context) * 6,
+            ),
             hintText: "Nombre"),
       ),
     );

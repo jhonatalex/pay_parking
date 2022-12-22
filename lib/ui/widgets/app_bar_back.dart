@@ -3,26 +3,42 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 
-import '../../app/controllers/auth_controller.dart';
+import '../../domain/repositories/abstractas/responsive.dart';
 
 var user = FirebaseAuth.instance.currentUser!;
 String inicial = user.email!.substring(0, 1).toUpperCase();
 
-final appBarBack = AppBar(
-  backgroundColor: Color.fromARGB(213, 247, 247, 247),
-  foregroundColor: Colors.black,
-  leading: IconButton(
-      icon: const Icon(Icons.arrow_back),
-      tooltip: 'volver',
-      onPressed: () {
-        Get.offNamed(RouteNames.home);
-      }),
-  title: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-    Text(user.email!,
-        style: const TextStyle(
-            fontFamily: "Lato",
-            fontSize: 18.0,
-            color: Colors.black,
-            fontWeight: FontWeight.bold)),
-  ]),
-);
+class AppBarBack extends StatelessWidget {
+  final title;
+  const AppBarBack({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      centerTitle: true,
+      toolbarHeight: sclH(context) * 6,
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.black,
+      leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            size: sclH(context) * 2.5,
+          ),
+          tooltip: 'volver',
+          onPressed: () {
+            Get.offNamed(RouteNames.home);
+          }),
+      title: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Text(title,
+            style: TextStyle(
+                fontFamily: "Lato",
+                fontSize: sclH(context) * 2,
+                color: Colors.black,
+                fontWeight: FontWeight.bold)),
+      ]),
+    );
+  }
+}

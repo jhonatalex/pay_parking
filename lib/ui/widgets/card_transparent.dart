@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../domain/repositories/abstractas/responsive.dart';
+
 class CardContainer extends StatelessWidget {
   const CardContainer({Key? key}) : super(key: key);
 
@@ -8,8 +10,8 @@ class CardContainer extends StatelessWidget {
     return Center(
       child: Container(
           alignment: const Alignment(-0.2, -0.8),
-          height: 650,
-          width: 320,
+          height: sclH(context) * 82,
+          width: sclW(context) * 80,
           decoration: const BoxDecoration(
               color: Color.fromARGB(157, 247, 247, 247),
               borderRadius: BorderRadius.only(

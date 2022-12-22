@@ -1,26 +1,32 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pay_parking/app/controllers/auth_controller.dart';
 import 'package:pay_parking/ui/pages/home/home_page.dart';
-import 'package:pay_parking/ui/pages/login/login_page.dart';
 
 import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/pages/register/register_page.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 
 import '../../app/controllers/my_user_controller.dart';
+import '../../domain/repositories/abstractas/responsive.dart';
 import '../pages/intro_main/intro_screen_page.dart';
-import '../pages/register/register_controller.dart';
 
+var user = FirebaseAuth.instance.currentUser!;
 var userPicturePath =
     "assets/img/jhonatan_mejias.jpg"; //currentUser.email!.toString();
 
-class DrawerItems extends StatelessWidget {
+class DrawerItems extends StatefulWidget {
   const DrawerItems({Key? key}) : super(key: key);
 
+  @override
+  State<DrawerItems> createState() => _DrawerItemsState();
+}
+
+class _DrawerItemsState extends State<DrawerItems> {
   @override
   Widget build(BuildContext context) {
     final userController = Get.find<MyUserController>();
@@ -43,7 +49,7 @@ class DrawerItems extends StatelessWidget {
           imageUrl: userController.user.value!.image!,
           progressIndicatorBuilder: (_, __, progress) =>
               CircularProgressIndicator(value: progress.progress),
-          errorWidget: (_, __, ___) => const Icon(Icons.error),
+          errorWidget: (_, __, ___) => Icon(Icons.error),
           fit: BoxFit.fill,
         );
       }
@@ -62,7 +68,6 @@ class DrawerItems extends StatelessWidget {
         */
             },
             child: Container(
-              width: double.infinity,
               decoration: const BoxDecoration(gradient: GradientBlue),
               padding: const EdgeInsets.all(30),
               child: Column(
@@ -79,124 +84,230 @@ class DrawerItems extends StatelessWidget {
                       child: Center(
                         child: ClipOval(
                           child: SizedBox(
-                            width: 120,
-                            height: 120,
+                            width: sclH(context) * 12,
+                            height: sclH(context) * 12,
                             child: imageObx,
                           ),
                         ),
                       ),
                     ),
-
-                    Text("Jhonatan Mejias",
+                    SizedBox(
+                      height: sclH(context) * 1,
+                    ),
+                    Text(UserName(),
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontFamily: "Lato",
-                            fontSize: 16.0,
-                            color: Colors.black,
+                            fontSize: sclH(context) * 2.5,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold)),
-                    Text("userEmail",
-                        style: const TextStyle(
+                    Text(user.email.toString(),
+                        style: TextStyle(
                             fontFamily: "Lato",
-                            fontSize: 14.0,
-                            color: Colors.black)),
+                            fontSize: sclH(context) * 2,
+                            color: Colors.white)),
                   ]),
             )),
         IconButton(
           onPressed: () {
             //Navigator.pop(context);
           },
-          icon: const Icon(Icons.cancel_outlined),
+          icon: Icon(
+            Icons.cancel_outlined,
+            size: sclH(context) * 2,
+          ),
           color: Colors.red,
         )
       ],
     );
 
-    final drawerItems = ListView(
+    final drawerItems = Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         drawerHeader,
         ListTile(
-          title: const Text(
+          title: Text(
             "Home",
+            style: TextStyle(
+              fontSize: sclH(context) * 2.5,
+            ),
           ),
-          leading: const Icon(Icons.home, color: Colors.red),
-          trailing: const Icon(Icons.keyboard_arrow_left, color: Colors.red),
+          leading: Icon(
+            Icons.home,
+            color: Colors.red,
+            size: sclH(context) * 3,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_left,
+            color: Colors.red,
+            size: sclH(context) * 3,
+          ),
           onTap: () {
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: ((context) => const HomePage())));
           },
         ),
         ListTile(
-          title: const Text(
+          title: Text(
             "Login",
+            style: TextStyle(
+              fontSize: sclH(context) * 2.5,
+            ),
           ),
-          leading: const Icon(Icons.login, color: Colors.blue),
-          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+          leading: Icon(
+            Icons.login,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
           onTap: () {
             //Navigator.pop(context); para cerrar menu
           },
         ),
         ListTile(
-          title: const Text(
+          title: Text(
             "Login Main",
+            style: TextStyle(
+              fontSize: sclH(context) * 2.5,
+            ),
           ),
-          leading: const Icon(Icons.login, color: Colors.blue),
-          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+          leading: Icon(
+            Icons.login,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
           onTap: () {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: ((context) => const IntroScreen())));
           },
         ),
         ListTile(
-          title: const Text(
+          title: Text(
             "Registrer",
+            style: TextStyle(
+              fontSize: sclH(context) * 2.5,
+            ),
           ),
-          leading: const Icon(Icons.door_front_door, color: Colors.blue),
-          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+          leading: Icon(
+            Icons.door_front_door,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: ((context) => const RegisterPage())));
           },
         ),
         ListTile(
-          title: const Text(
+          title: Text(
             "Barrier",
+            style: TextStyle(
+              fontSize: sclH(context) * 2.5,
+            ),
           ),
-          leading: const Icon(Icons.door_front_door, color: Colors.blue),
-          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+          leading: Icon(
+            Icons.door_front_door,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: ((context) => const OpenBarrierPage())));
           },
         ),
         ListTile(
-          title: const Text(
+          title: Text(
             "Movimientos",
+            style: TextStyle(
+              fontSize: sclH(context) * 2.5,
+            ),
           ),
-          leading: const Icon(Icons.comment, color: Colors.blue),
-          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+          leading: Icon(
+            Icons.comment,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
+          title: Text(
             "Depositar",
+            style: TextStyle(
+              fontSize: sclH(context) * 2.5,
+            ),
           ),
-          leading: const Icon(Icons.comment, color: Colors.blue),
-          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+          leading: Icon(
+            Icons.comment,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
+          title: Text(
             "Comercio",
+            style: TextStyle(
+              fontSize: sclH(context) * 2.5,
+            ),
           ),
-          leading: const Icon(Icons.comment, color: Colors.blue),
-          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+          leading: Icon(
+            Icons.comment,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
+          title: Text(
             "Soporte",
+            style: TextStyle(
+              fontSize: sclH(context) * 2.5,
+            ),
           ),
-          leading: const Icon(Icons.support_agent, color: Colors.blue),
-          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+          leading: Icon(
+            Icons.support_agent,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
           onTap: () {},
         ),
         const Divider(
@@ -205,15 +316,35 @@ class DrawerItems extends StatelessWidget {
           color: Colors.black38,
         ),
         ListTile(
-          title: const Text(
+          title: Text(
             "Ajustes",
+            style: TextStyle(
+              fontSize: sclH(context) * 2.5,
+            ),
           ),
-          leading: const Icon(Icons.miscellaneous_services, color: Colors.blue),
-          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+          leading: Icon(
+            Icons.miscellaneous_services,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.blue,
+            size: sclH(context) * 3,
+          ),
           onTap: () {},
         ),
       ],
     );
     return drawerItems;
   }
+}
+
+UserName() {
+  var u = user.uid;
+  if (u == null) {}
+  ;
+  //si no tiene nombre mostrar id
+
+  return u;
 }

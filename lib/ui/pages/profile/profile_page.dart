@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pay_parking/domain/repositories/abstractas/responsive.dart';
 import 'package:pay_parking/ui/pages/register/register_controller.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/Background.dart';
@@ -73,58 +74,47 @@ class _profileState extends State<ProfilePage> {
         child: Stack(
       children: [
         const CardContainer(),
-        Flexible(
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                const Flexible(
-                  child: SizedBox(
-                    height: 80,
-                  ),
+        Column(children: <Widget>[
+          AppBarBack(title: 'Mi Perfil'),
+          SizedBox(
+            height: sclH(context) * 4,
+          ),
+
+          //IMAGEN PIKER
+          GestureDetector(
+            onTap: () async {
+              final pickedImage =
+                  await picker.pickImage(source: ImageSource.gallery);
+              if (pickedImage != null) {
+                Get.find<MyUserController>().setImage(File(pickedImage.path));
+              }
+            },
+            child: Center(
+              child: ClipOval(
+                child: SizedBox(
+                  width: sclH(context) * 18,
+                  height: sclH(context) * 18,
+                  child: imageObx,
                 ),
-                const Flexible(
-                  child: Text("Mi Perfil",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30)),
-                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text("Completa Tus Datos",
+              style:
+                  TextStyle(color: Colors.black, fontSize: sclW(context) * 4)),
 
-                const SizedBox(
-                  height: 5,
-                ),
-
-                //IMAGEN PIKER
-                GestureDetector(
-                  onTap: () async {
-                    final pickedImage =
-                        await picker.pickImage(source: ImageSource.gallery);
-                    if (pickedImage != null) {
-                      Get.find<MyUserController>()
-                          .setImage(File(pickedImage.path));
-                    }
-                  },
-                  child: Center(
-                    child: ClipOval(
-                      child: SizedBox(
-                        width: 120,
-                        height: 120,
-                        child: imageObx,
-                      ),
-                    ),
-                  ),
-                ),
-
-                const Flexible(child: SizedBox(height: 30)),
-
-                const Text("Completa Tus Datos",
-                    style: TextStyle(color: Colors.black, fontSize: 14)),
-
-                const SizedBox(),
-                //BOTONES
-                // CAMPO DE NOMBRE
+          const SizedBox(),
+          //BOTONES
+          // CAMPO DE NOMBRE
+          Container(
+            height: sclH(context) * 50,
+            width: sclW(context) * 65,
+            child: ListView(
+              children: [
                 InputNameField("Nombre", userController.nameController),
-
                 // CAMPO DE RUT
                 RutField("Rut", userController.rutController),
 
@@ -135,56 +125,59 @@ class _profileState extends State<ProfilePage> {
                 CityField("Ciudad", userController.cityController),
                 const SizedBox(
                   height: 10,
-                ),
+                ), //BOTON DE
+                Obx(() {
+                  final isSaving = userController.isSaving.value;
+                  return Stack(alignment: Alignment.center, children: [
+                    Container(
+                        margin: const EdgeInsets.only(top: 20.0),
+                        width: sclW(context) * 25,
+                        height: sclW(context) * 25 / 2.5,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                            color: const Color(0xFFFFDF40)),
+                        child: Center(
+                          child: TextButton(
+                              onPressed: isSaving
+                                  ? null
+                                  : () => userController.saveMyUser(),
+                              child: Center(
+                                child: Text("Guardar",
+                                    style: TextStyle(
+                                        fontFamily: "Lato",
+                                        fontSize: sclW(context) * 5,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold)),
+                              )),
+                        )),
+                    if (isSaving) const CircularProgressIndicator()
+                  ]);
+                }),
+                SizedBox(
+                  height: 50,
+                )
+              ],
+            ),
+          ),
 
-                //BOTON DE
-                Flexible(
-                  child: Obx(() {
-                    final isSaving = userController.isSaving.value;
-                    return Stack(alignment: Alignment.center, children: [
-                      Container(
-                          margin: const EdgeInsets.only(top: 20.0),
-                          width: 220.0,
-                          height: 50.0,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15.0),
-                              color: const Color(0xFFFFDF40)),
-                          child: Center(
-                            child: TextButton(
-                                onPressed: isSaving
-                                    ? null
-                                    : () => userController.saveMyUser(),
-                                child: const Center(
-                                  child: Text("Guardar",
-                                      style: TextStyle(
-                                          fontFamily: "Lato",
-                                          fontSize: 18.0,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold)),
-                                )),
-                          )),
-                      if (isSaving) const CircularProgressIndicator()
-                    ]);
-                  }),
-                ),
-
-                /* TextButton(
-                    onPressed: () {
-                      Get.offNamed(RouteNames.signIn);
-                    },
-                    child: const Text("ver pagina verify email",
-                        style: TextStyle(
-                            color: Colors.yellow,
-                            fontWeight: FontWeight.bold))),*/
-              ]),
-        )
+          /* TextButton(
+                  onPressed: () {
+                    Get.offNamed(RouteNames.signIn);
+                  },
+                  child: const Text("ver pagina verify email",
+                      style: TextStyle(
+                          color: Colors.yellow,
+                          fontWeight: FontWeight.bold))),*/
+        ])
       ],
     ));
 
     return Scaffold(
-        appBar: appBarBack,
         body: Stack(
-          children: [const Background(), Flexible(child: cardLogin)],
-        ));
+      children: [
+        const Background(),
+        cardLogin,
+      ],
+    ));
   }
 }

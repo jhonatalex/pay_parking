@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../domain/repositories/abstractas/responsive.dart';
+
 class RutField extends StatelessWidget {
   String textButton = "";
   TextEditingController rutController;
@@ -12,9 +14,7 @@ class RutField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 20.0),
-      padding: const EdgeInsets.only(left: 10.0),
-      width: 220.0,
-      height: 50.0,
+      height: sclW(context) * 45 / 5,
       decoration: BoxDecoration(
           //boxShadow: [ShadowBlack],
           borderRadius: BorderRadius.circular(15.0),
@@ -24,12 +24,18 @@ class RutField extends StatelessWidget {
               style: BorderStyle.solid),
           color: const Color.fromARGB(76, 250, 250, 250)),
       child: TextField(
+        style: TextStyle(
+          fontSize: sclW(context) * 5,
+        ),
         controller: rutController,
         restorationId: 'rut_field',
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
             border: InputBorder.none,
             filled: false,
-            icon: Icon(Icons.numbers_rounded),
+            icon: Icon(
+              Icons.numbers_rounded,
+              size: sclW(context) * 6,
+            ),
             hintText: "Rut"),
       ),
     );

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_parking/app/controllers/my_user_controller.dart';
+import 'package:pay_parking/main.dart';
 import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
@@ -12,6 +13,7 @@ import 'package:pay_parking/ui/widgets/styles.dart';
 import 'package:pay_parking/ui/widgets/app_bar.dart';
 
 import '../../../app/controllers/auth_controller.dart';
+import '../../../domain/repositories/abstractas/responsive.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,21 +31,21 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ButtonBlueWithIcon(
-            Icons.bluetooth, "ABRIR BARRERA", const OpenBarrierPage()),
+            Icons.bluetooth, "ABRIR BARRERA", RouteNames.openBarrier),
         ButtonBlueWithIcon(
-            Icons.local_parking, "ESTACIONAMIENTOS", const OpenBarrierPage()),
+            Icons.local_parking, "ESTACIONAMIENTOS", RouteNames.openBarrier),
         ButtonBlueWithIcon(
-            Icons.monetization_on, "RECARGA", const OpenBarrierPage()),
+            Icons.monetization_on, "RECARGA", RouteNames.openBarrier),
         ButtonBlueWithIcon(
-            Icons.account_balance_wallet, "BILLETERA", const OpenBarrierPage())
+            Icons.account_balance_wallet, "BILLETERA", RouteNames.openBarrier)
       ],
     );
 
     final cardTarjet = Container(
-        height: 120.0,
-        width: 210.0,
+        height: sclW(context) * 22.85,
+        width: sclW(context) * 40,
         margin: const EdgeInsets.all(10),
-        padding: const EdgeInsets.only(top: 10, left: 20),
+        padding: const EdgeInsets.only(left: 20),
         decoration: BoxDecoration(
             color: Colors.green,
             gradient: GradientBlue,
@@ -52,35 +54,42 @@ class _HomePageState extends State<HomePage> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Image.asset(
             "assets/img/bancamiga_logo.png",
-            height: 40,
+            width: sclW(context) * 25,
           ),
-          doSpace20,
-          const Text("BS",
+          Text("BS",
               style: TextStyle(
-                  fontFamily: "Lato", fontSize: 12.0, color: Colors.white)),
-          const Text("Disponible",
+                  fontFamily: "Lato",
+                  fontSize: sclW(context) * 3.5,
+                  color: Colors.white)),
+          Text("Disponible",
               style: TextStyle(
-                  fontFamily: "Lato", fontSize: 10.0, color: Colors.white)),
-          const Text("BS 0,00",
+                  fontFamily: "Lato",
+                  fontSize: sclW(context) * 3,
+                  color: Colors.white)),
+          Text("BS 0,00",
               style: TextStyle(
-                  fontFamily: "Lato", fontSize: 14.0, color: Colors.white)),
+                  fontFamily: "Lato",
+                  fontSize: sclW(context) * 3.5,
+                  color: Colors.white)),
         ]));
 
     final tarjets = SizedBox(
-        width: 280,
+        width: sclW(context) * 50,
         child: Column(children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            const Text("Mis Tarjetas",
-                style: TextStyle(fontFamily: "Lato", fontSize: 14.0)),
+            Text("Mis Tarjetas",
+                style:
+                    TextStyle(fontFamily: "Lato", fontSize: sclW(context) * 3)),
             Row(
               children: [
                 TextButton.icon(
                     onPressed: () {},
-                    icon: const Icon(Icons.add_circle_outline, size: 16),
-                    label: const Text("Agregar",
+                    icon:
+                        Icon(Icons.add_circle_outline, size: sclW(context) * 3),
+                    label: Text("Agregar",
                         style: TextStyle(
                             fontFamily: "Lato",
-                            fontSize: 14.0,
+                            fontSize: sclW(context) * 3,
                             fontWeight: FontWeight.bold)))
               ],
             ),
@@ -92,30 +101,8 @@ class _HomePageState extends State<HomePage> {
               children: [cardTarjet])
         ]));
 
-    final content = Container(
-      color: const Color.fromARGB(111, 247, 247, 247),
-      child: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 24,
-            ),
-            SizedBox(
-              width: 280,
-              child: const Text("Funciones",
-                  style: TextStyle(fontFamily: "Lato", fontSize: 14.0)),
-            ),
-            funtions,
-            doSpace10,
-            tarjets
-          ],
-        ),
-      ),
-    );
-
     return Scaffold(
-      appBar: appBar,
-      body: content,
+      body: Content(funtions: funtions, tarjets: tarjets),
       /*Obx(() {
         //if (userController.isLoading.value) {
          // return const Center(child: CircularProgressIndicator());
@@ -123,7 +110,56 @@ class _HomePageState extends State<HomePage> {
         //return content;
       }),*/
       drawer: Drawer(
+        width: sclW(context) * 60,
         child: DrawerItems(),
+      ),
+    );
+  }
+}
+
+class Content extends StatefulWidget {
+  const Content({
+    Key? key,
+    required this.funtions,
+    required this.tarjets,
+  }) : super(key: key);
+
+  final Column funtions;
+  final SizedBox tarjets;
+
+  @override
+  State<Content> createState() => _ContentState();
+}
+
+class _ContentState extends State<Content> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color.fromARGB(111, 247, 247, 247),
+      child: Center(
+        child: ListView(
+          children: [
+            MyAppBar(),
+            SizedBox(
+              height: 24,
+            ),
+            Container(
+              width: sclW(context) * 90,
+              child: Column(
+                children: [
+                  Text(
+                    "Funciones",
+                    style: TextStyle(
+                        fontFamily: "Lato", fontSize: sclW(context) * 3),
+                  ),
+                  widget.funtions,
+                  doSpace10,
+                  widget.tarjets
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
