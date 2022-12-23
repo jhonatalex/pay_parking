@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pay_parking/ui/widgets/app_bar_back.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import '../../../domain/repositories/abstractas/responsive.dart';
+import '../../routes/route_names.dart';
+
 class PaidPage extends StatefulWidget {
+  const PaidPage({Key? key}) : super(key: key);
+
   @override
   State<PaidPage> createState() => _PaidPageState();
 }
@@ -11,30 +17,37 @@ class _PaidPageState extends State<PaidPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Generar QR'),
-      ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            const AppBarBack(
+                title: "Generar QR", route: RouteNames.openBarrier),
+
             //desde aqui y la variable
             //  final controller = TextEditingController();
             QrImage(
               data: controller.text,
               backgroundColor: Colors.white,
               version: QrVersions.auto,
-              size: 150.0,
+              size: sclH(context) * 25,
             ),
 
             TextButton.icon(
               icon: Icon(
                 Icons.done,
-                size: 30,
+                size: sclH(context) * 4,
               ),
               onPressed: () {
                 setState(() {});
               },
-              label: Text("Generar qr"),
+              label: Text(
+                "Generar qr",
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                    fontSize: sclH(context) * 3),
+              ),
             ),
             // y de donde tomar la data para el qr
             TextField(
@@ -42,16 +55,16 @@ class _PaidPageState extends State<PaidPage> {
                 style: TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20),
+                    fontSize: sclH(context) * 3),
                 decoration: InputDecoration(
                   hintText: "Ingrese Datos",
-                  hintStyle: TextStyle(color: Colors.grey),
+                  hintStyle: const TextStyle(color: Colors.grey),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.blue),
+                    borderSide: const BorderSide(color: Colors.blue),
                   ),
                   suffixIcon: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.done,
                       size: 30,
                     ),

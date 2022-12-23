@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pay_parking/ui/routes/route_names.dart';
 
 import '../../domain/repositories/abstractas/responsive.dart';
 
@@ -10,9 +9,11 @@ String inicial = user.email!.substring(0, 1).toUpperCase();
 
 class AppBarBack extends StatelessWidget {
   final title;
+  final route;
   const AppBarBack({
     Key? key,
     required this.title,
+    required this.route,
   }) : super(key: key);
 
   @override
@@ -29,7 +30,7 @@ class AppBarBack extends StatelessWidget {
           ),
           tooltip: 'volver',
           onPressed: () {
-            Get.offNamed(RouteNames.home);
+            Get.offNamed(route);
           }),
       title: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Text(title,

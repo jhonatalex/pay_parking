@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:flutter/material.dart';
 
 class QrScanPage extends StatefulWidget {
+  const QrScanPage({Key? key}) : super(key: key);
+
   @override
   State<QrScanPage> createState() => _QrScanPageState();
 }
@@ -44,7 +45,7 @@ class _QrScanPageState extends State<QrScanPage> {
   }
 
   Widget buildControlButtons() => Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
             color: Colors.white24, borderRadius: BorderRadius.circular(8)),
         child: Row(
@@ -79,7 +80,7 @@ class _QrScanPageState extends State<QrScanPage> {
                 future: controller?.getCameraInfo(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.data != null) {
-                    return Icon(Icons.switch_camera);
+                    return const Icon(Icons.switch_camera);
                   } else {
                     return Container();
                   }
@@ -91,13 +92,13 @@ class _QrScanPageState extends State<QrScanPage> {
         ),
       );
   Widget buildResult() => Container(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
             color: Colors.white24, borderRadius: BorderRadius.circular(8)),
         child: Text(
           barcode != null ? 'Result : ${barcode!.code}' : 'Scan a code!',
           maxLines: 3,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
       );
   Widget buildQrView(BuildContext context) => QRView(

@@ -1,19 +1,15 @@
-import 'dart:io';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pay_parking/ui/pages/register/register_controller.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/input_email_field.dart';
-import 'package:pay_parking/ui/widgets/input_name_field.dart';
 import 'package:pay_parking/ui/widgets/input_password_field.dart';
 
 import '../../../app/controllers/my_user_controller.dart';
+import '../../../domain/repositories/abstractas/responsive.dart';
 import '../../widgets/Background.dart';
 import '../../widgets/card_transparent.dart';
-import '../../widgets/input_name_field.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -46,20 +42,20 @@ class _RegisterState extends State<RegisterPage> {
     final picker = ImagePicker();
 
     final logo = Container(
-        width: 100,
-        height: 100,
+        width: sclH(context) * 20,
+        height: sclH(context) * 20,
         decoration: const BoxDecoration(
             image: DecorationImage(
           fit: BoxFit.contain,
           image: AssetImage("assets/img/ParKiApp_logo.png"),
         )));
 
-    final cardLogin = Center(
-        child: Stack(
+    final cardLogin = Stack(
       children: [
         const CardContainer(),
         Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Flexible(
                 child: logo,
@@ -67,13 +63,14 @@ class _RegisterState extends State<RegisterPage> {
               const SizedBox(
                 height: 10,
               ),
-              const Text("Bienvenido",
+              Text("Bienvenido",
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 30)),
-              const Text("Ingresa un Correo y Contraseña para crear tu cuenta",
-                  style: TextStyle(color: Colors.black, fontSize: 14)),
+                      fontSize: sclH(context) * 3)),
+              Text("Ingresa un Correo y Contraseña para crear tu cuenta",
+                  style: TextStyle(
+                      color: Colors.black, fontSize: sclH(context) * 1.8)),
               const SizedBox(
                 height: 10,
               ),
@@ -94,8 +91,8 @@ class _RegisterState extends State<RegisterPage> {
               //BOTON DE
               Container(
                   margin: const EdgeInsets.only(top: 20.0),
-                  width: 220.0,
-                  height: 50.0,
+                  width: sclW(context) * 35,
+                  height: sclH(context) * 35 / 7,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
                       color: const Color(0xFFFFDF40)),
@@ -106,49 +103,58 @@ class _RegisterState extends State<RegisterPage> {
 
                           ///userController.saveMyUser();
                           /* Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => page));*/
+              context, MaterialPageRoute(builder: (context) => page));*/
                         },
-                        child: const Center(
+                        child: Center(
                           child: Text("Registrame",
                               style: TextStyle(
                                   fontFamily: "Lato",
-                                  fontSize: 18.0,
+                                  fontSize: sclH(context) * 2,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
                         )),
                   )),
-              const Divider(
-                height: 15,
-                thickness: 1,
-                indent: 130,
-                endIndent: 130,
-                color: Colors.black,
+              const Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Divider(
+                  height: 15,
+                  thickness: 1,
+                  indent: 130,
+                  endIndent: 130,
+                  color: Colors.black,
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("¿Ya estás registrado?"),
+                  Text(
+                    "¿Ya estás registrado?",
+                    style: TextStyle(
+                      fontSize: sclH(context) * 2,
+                    ),
+                  ),
                   TextButton(
                       onPressed: () {
                         Get.offNamed(RouteNames.signIn);
                       },
-                      child: const Text("Inicia Sesión",
+                      child: Text("Inicia Sesión",
                           style: TextStyle(
+                              fontSize: sclH(context) * 2,
                               color: Colors.yellow,
                               fontWeight: FontWeight.bold))),
                 ],
               ),
               /* TextButton(
-                  onPressed: () {
-                    Get.offNamed(RouteNames.signIn);
-                  },
-                  child: const Text("ver pagina verify email",
-                      style: TextStyle(
-                          color: Colors.yellow,
-                          fontWeight: FontWeight.bold))),*/
+              onPressed: () {
+                Get.offNamed(RouteNames.signIn);
+              },
+              child: const Text("ver pagina verify email",
+                  style: TextStyle(
+                      color: Colors.yellow,
+                      fontWeight: FontWeight.bold))),*/
             ])
       ],
-    ));
+    );
 
     return Scaffold(
         body: Stack(

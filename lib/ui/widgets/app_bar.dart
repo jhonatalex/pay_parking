@@ -41,7 +41,7 @@ class MyAppBar extends StatelessWidget {
               style: TextStyle(
                   fontFamily: "Lato",
                   fontSize: sclH(context) * 2,
-                  color: Color.fromARGB(255, 80, 70, 70),
+                  color: const Color.fromARGB(255, 80, 70, 70),
                   fontWeight: FontWeight.bold)),
           Text(user.email!,
               style: TextStyle(

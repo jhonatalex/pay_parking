@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../domain/repositories/abstractas/responsive.dart';
+
 class PasswordField extends StatefulWidget {
   String textButton = "";
   TextEditingController passwordController;
@@ -21,8 +23,8 @@ class _PasswordFieldState extends State<PasswordField> {
     return Container(
         margin: const EdgeInsets.only(top: 20.0),
         padding: const EdgeInsets.only(left: 10.0),
-        width: 220.0,
-        height: 50.0,
+        width: sclW(context) * 45,
+        height: sclW(context) * 45 / 7,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
             border: Border.all(
@@ -31,22 +33,30 @@ class _PasswordFieldState extends State<PasswordField> {
                 style: BorderStyle.solid),
             color: const Color.fromARGB(76, 250, 250, 250)),
         child: TextFormField(
+          style: TextStyle(fontSize: sclW(context) * 3),
           controller: widget.passwordController,
           obscureText: isHidden,
           //maxLength: 8,
           decoration: InputDecoration(
             //filled: true,
             border: InputBorder.none,
-            icon: const Icon(Icons.lock_outline),
+            icon: Icon(
+              Icons.lock_outline,
+              size: sclW(context) * 3,
+            ),
             hintText: widget.textButton,
             //helperText: "Ingrese 8 dígitos",
             suffixIcon: IconButton(
               onPressed: togglePasswordVisibility,
               hoverColor: Colors.transparent,
               icon: isHidden
-                  ? const Icon(Icons.visibility_off)
-                  : const Icon(
+                  ? Icon(
+                      Icons.visibility_off,
+                      size: sclW(context) * 3,
+                    )
+                  : Icon(
                       Icons.visibility,
+                      size: sclW(context) * 3,
                     ),
             ),
           ),

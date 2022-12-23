@@ -1,8 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:pay_parking/data/login_firebase/auth_repositoryAbst.dart';
 import 'package:pay_parking/data/login_firebase/auth_repositoryImp.dart';
 import 'package:pay_parking/dependency_injection/app_binding.dart';

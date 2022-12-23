@@ -8,12 +8,9 @@ import 'package:pay_parking/domain/repositories/abstractas/responsive.dart';
 import 'package:pay_parking/ui/pages/register/register_controller.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/Background.dart';
-import 'package:pay_parking/ui/widgets/app_bar.dart';
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
 import 'package:pay_parking/ui/widgets/input_city_field.dart';
-import 'package:pay_parking/ui/widgets/input_email_field.dart';
 import 'package:pay_parking/ui/widgets/input_name_field.dart';
-import 'package:pay_parking/ui/widgets/input_password_field.dart';
 import 'package:pay_parking/ui/widgets/input_phone_field.dart';
 import 'package:pay_parking/ui/widgets/input_rut_field.dart';
 
@@ -75,7 +72,7 @@ class _profileState extends State<ProfilePage> {
       children: [
         const CardContainer(),
         Column(children: <Widget>[
-          AppBarBack(title: 'Mi Perfil'),
+          const AppBarBack(title: 'Mi Perfil', route: RouteNames.home),
           SizedBox(
             height: sclH(context) * 4,
           ),
@@ -99,7 +96,7 @@ class _profileState extends State<ProfilePage> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Text("Completa Tus Datos",
@@ -153,7 +150,7 @@ class _profileState extends State<ProfilePage> {
                     if (isSaving) const CircularProgressIndicator()
                   ]);
                 }),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 )
               ],

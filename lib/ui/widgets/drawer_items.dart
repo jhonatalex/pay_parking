@@ -49,7 +49,7 @@ class _DrawerItemsState extends State<DrawerItems> {
           imageUrl: userController.user.value!.image!,
           progressIndicatorBuilder: (_, __, progress) =>
               CircularProgressIndicator(value: progress.progress),
-          errorWidget: (_, __, ___) => Icon(Icons.error),
+          errorWidget: (_, __, ___) => const Icon(Icons.error),
           fit: BoxFit.fill,
         );
       }

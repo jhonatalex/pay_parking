@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 
 import '../../domain/repositories/abstractas/responsive.dart';
-import '../routes/route_names.dart';
 
 // ignore: must_be_immutable
 class ButtonBlueWithIcon extends StatelessWidget {

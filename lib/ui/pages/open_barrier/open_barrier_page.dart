@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pay_parking/ui/pages/paid/paid_page.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
 
-import '../../widgets/app_bar.dart';
+import '../../../domain/repositories/abstractas/responsive.dart';
+import '../../routes/route_names.dart';
 import '../../widgets/app_bar_back.dart';
 
 class OpenBarrierPage extends StatelessWidget {
@@ -12,8 +13,8 @@ class OpenBarrierPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final imageBarrier = Container(
         margin: const EdgeInsets.only(top: 0),
-        width: 150,
-        height: 150,
+        width: sclH(context) * 20,
+        height: sclH(context) * 20,
         decoration: const BoxDecoration(
             image: DecorationImage(
           fit: BoxFit.contain,
@@ -22,8 +23,8 @@ class OpenBarrierPage extends StatelessWidget {
 
     final imageBluetooh = Container(
         margin: const EdgeInsets.only(top: 0),
-        width: 200,
-        height: 150,
+        width: sclH(context) * 25,
+        height: sclH(context) * 25,
         decoration: const BoxDecoration(
             image: DecorationImage(
           fit: BoxFit.contain,
@@ -32,14 +33,17 @@ class OpenBarrierPage extends StatelessWidget {
 
     final textOpen = Container(
         margin: const EdgeInsets.only(top: 0),
-        width: 250,
-        child: Column(children: const [
+        width: sclH(context) * 60,
+        child: Column(children: [
           Text("Entrada",
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: sclH(context) * 4)),
           Text(
               "Mantente junto al modulo emisor de tikes hasta que abra la barrera",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: sclH(context) * 3)),
           Divider(
             height: 15,
             thickness: 1,
@@ -53,18 +57,26 @@ class OpenBarrierPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Center(
           child: Column(children: [
-        const AppBarBack(
-          title: "Abrir Barrera",
-        ),
+        const AppBarBack(title: "Abrir Barrera", route: RouteNames.home),
         imageBarrier,
         imageBluetooh,
         textOpen,
-        ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => PaidPage()));
-            },
-            child: const Text('Pago exitoso'))
+        Container(
+          color: Colors.amber,
+          width: sclW(context) * 35,
+          height: sclW(context) * 25 / 2.5,
+          child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PaidPage()));
+
+                //Get.offNamed(RouteNames.paid);
+              },
+              child: Text(
+                'Pago exitoso',
+                style: TextStyle(fontSize: sclW(context) * 5),
+              )),
+        )
         //ButtonWithBackground("Entrar", Home())
       ])),
       drawer: const Drawer(

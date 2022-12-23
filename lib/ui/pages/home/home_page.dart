@@ -1,18 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_parking/app/controllers/my_user_controller.dart';
-import 'package:pay_parking/main.dart';
-import 'package:pay_parking/ui/pages/open_barrier/open_barrier_page.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/button_blue_with_icon.dart';
 import 'package:pay_parking/ui/widgets/drawer_items.dart';
 import 'package:pay_parking/ui/widgets/styles.dart';
 import 'package:pay_parking/ui/widgets/app_bar.dart';
 
-import '../../../app/controllers/auth_controller.dart';
 import '../../../domain/repositories/abstractas/responsive.dart';
 
 class HomePage extends StatefulWidget {

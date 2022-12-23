@@ -1,10 +1,7 @@
-import 'dart:ffi';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:pay_parking/data/login_firebase/auth_repositoryAbst.dart';
-import 'package:pay_parking/data/login_firebase/auth_repositoryImp.dart';
 import 'package:pay_parking/ui/routes/route_names.dart';
 import 'package:pay_parking/ui/widgets/error_snackbar.dart';
 
@@ -35,10 +32,10 @@ class RegisterController extends GetxController {
           Get.showSnackbar(ErrorSnackbar(e.message ?? e.code));
         }
       } else {
-        Get.showSnackbar(ErrorSnackbar("Favor Ingrese una  Contraseña"));
+        Get.showSnackbar(const ErrorSnackbar("Favor Ingrese una  Contraseña"));
       }
     } else {
-      Get.showSnackbar(ErrorSnackbar("Favor Ingrese un Email Valido"));
+      Get.showSnackbar(const ErrorSnackbar("Favor Ingrese un Email Valido"));
     }
   }
 

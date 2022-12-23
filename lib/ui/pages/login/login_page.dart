@@ -7,6 +7,7 @@ import 'package:pay_parking/ui/widgets/background.dart';
 
 import 'package:pay_parking/ui/widgets/card_transparent.dart';
 
+import '../../../domain/repositories/abstractas/responsive.dart';
 import '../../widgets/input_email_field.dart';
 import '../../widgets/input_password_field.dart';
 
@@ -39,8 +40,8 @@ class _LoginState extends State<LoginPage> {
     final LoginController controller = Get.find<LoginController>();
 
     final logo = Container(
-        width: 200,
-        height: 200,
+        width: sclH(context) * 20,
+        height: sclH(context) * 20,
         decoration: const BoxDecoration(
             image: DecorationImage(
           fit: BoxFit.contain,
@@ -57,15 +58,15 @@ class _LoginState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const SizedBox(height: 50),
               Flexible(
                 //fit: FlexFit.tight, esto da error en una pantalla mas grade
                 child: logo,
               ),
               const SizedBox(height: 10),
-              const Text(
+              Text(
                 "Iniciar Sesión",
-                style: TextStyle(fontFamily: "raleway", fontSize: 30),
+                style: TextStyle(
+                    fontFamily: "raleway", fontSize: sclW(context) * 4),
               ),
               //BOTONES
               // CAMPO DE EMAIL
@@ -78,8 +79,8 @@ class _LoginState extends State<LoginPage> {
               //BOTON DE INICIO DE SESSION
               Container(
                   margin: const EdgeInsets.only(top: 20.0),
-                  width: 220.0,
-                  height: 50.0,
+                  width: sclW(context) * 35,
+                  height: sclH(context) * 35 / 7,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
                       color: const Color(0xFFFFDF40)),
@@ -90,11 +91,11 @@ class _LoginState extends State<LoginPage> {
 
                           /* Navigator.push(                                  context, MaterialPageRoute(builder: (context) => page));*/
                         },
-                        child: const Center(
+                        child: Center(
                           child: Text("Ingresar",
                               style: TextStyle(
                                   fontFamily: "Lato",
-                                  fontSize: 18.0,
+                                  fontSize: sclH(context) * 2,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
                         )),
@@ -102,26 +103,27 @@ class _LoginState extends State<LoginPage> {
               const SizedBox(
                 height: 20,
               ),
-              Stack(
-                children: [
-                  const Divider(
-                    height: 15,
-                    thickness: 1,
-                    indent: 130,
-                    endIndent: 130,
-                    color: Colors.black,
-                  ),
-                  Center(
-                    child: TextButton(
-                        onPressed: () {
-                          Get.offNamed(RouteNames.forgotPassword);
-                        },
-                        child: const Text("¿Olvidó su contraseña?",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold))),
-                  ),
-                ],
+              const Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Divider(
+                  height: 15,
+                  thickness: 1,
+                  indent: 130,
+                  endIndent: 130,
+                  color: Colors.black,
+                ),
+              ),
+              Center(
+                child: TextButton(
+                    onPressed: () {
+                      Get.offNamed(RouteNames.forgotPassword);
+                    },
+                    child: Text("¿Olvidó su contraseña?",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: sclH(context) * 2,
+                        ))),
               ),
 
               //Solo para navegar porque el botton back no funciona
@@ -132,18 +134,19 @@ class _LoginState extends State<LoginPage> {
                       onPressed: () {
                         Get.offNamed(RouteNames.register);
                       },
-                      child: const Text("Resgistrarse",
+                      child: Text("Resgistrarse",
                           style: TextStyle(
-                              color: Color(0xFFFFDF40),
+                              fontSize: sclH(context) * 2,
+                              color: const Color(0xFFFFDF40),
                               fontWeight: FontWeight.bold))),
-                  TextButton(
+                  /*  TextButton(
                       onPressed: () {
                         Get.offNamed(RouteNames.loginMain);
                       },
                       child: const Text("Volver",
                           style: TextStyle(
                               color: Color(0xFFFFDF40),
-                              fontWeight: FontWeight.bold))),
+                              fontWeight: FontWeight.bold))),*/
                 ],
               ),
             ])
@@ -152,7 +155,7 @@ class _LoginState extends State<LoginPage> {
 
     return Scaffold(
         body: Stack(
-      children: [Background(), Flexible(child: cardLogin)],
+      children: [const Background(), Flexible(child: cardLogin)],
     ));
   }
 }

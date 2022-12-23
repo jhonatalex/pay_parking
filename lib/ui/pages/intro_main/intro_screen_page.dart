@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:page_indicator/page_indicator.dart';
 
 import '../../../app/controllers/google_controller.dart';
+import '../../../domain/repositories/abstractas/responsive.dart';
 import '../../routes/route_names.dart';
 import '../../widgets/Background.dart';
 import '../../widgets/card_transparent.dart';
@@ -22,10 +23,10 @@ class IntroScreen extends StatelessWidget {
 
 class _IntroPager extends HookWidget {
   final String slideText1 =
-      'aplicacion que te permite pagar el tickets de estacionamiento desde tu smartphone.';
+      'Aplicacion que te permite pagar el tickets de estacionamiento desde tu smartphone.';
 
   final String slideText2 =
-      'Solo acerca tu smartphone o coloca el QR  Y listo sin ir a pagar a la taquilla y sin el uso del  efectivo.';
+      'Solo acerca tu smartphone o coloca el QR  y listo, sin ir a pagar a la taquilla y sin el uso del  efectivo.';
 
   final String slideText3 =
       'Para utilizarla, solo debes crear tu usuario, cargar tu método de pago y añadir saldo a tu billetera en la app.';
@@ -42,17 +43,17 @@ class _IntroPager extends HookWidget {
           child: PageView(
             children: <Widget>[
               _DescriptionPage(
-                textTitle: "Que es PayParking?",
+                textTitle: "¿Qué es PayParking?",
                 text: slideText1,
                 imagePath: 'assets/img/barrera-auto.png',
               ),
               _DescriptionPage(
-                textTitle: "Como Funciona?",
+                textTitle: "¿Cómo Funciona?",
                 text: slideText2,
                 imagePath: 'assets/img/EquiposParking.png',
               ),
               _DescriptionPage(
-                textTitle: "Como empiezo?",
+                textTitle: "¿Cómo empiezo?",
                 text: slideText3,
                 imagePath: 'assets/img/pago_tike.png',
               ),
@@ -92,8 +93,8 @@ class _DescriptionPage extends StatelessWidget {
         children: <Widget>[
           Image.asset(
             imagePath,
-            width: 550,
-            height: 550,
+            width: sclH(context) * 40,
+            height: sclH(context) * 40,
           ),
           Container(
             alignment: Alignment.center,
@@ -102,15 +103,16 @@ class _DescriptionPage extends StatelessWidget {
                 Text(
                   textTitle,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: 38.0, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: sclH(context) * 4, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
                 Text(
                   text,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: 22.0, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: sclH(context) * 2.5,
+                      fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -136,29 +138,29 @@ class _LoginPage extends StatelessWidget {
           children: <Widget>[
             Image.asset(
               'assets/img/ParKiApp_logo.png',
-              width: 200,
-              height: 200,
+              width: sclH(context) * 20,
+              height: sclH(context) * 20,
             ),
-            Expanded(
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  children: const [
-                    SizedBox(height: 25),
-                    Text(
-                      'Bienvenido',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 32.0, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'puede ingresar con: ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 22.0, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                children: [
+                  const SizedBox(height: 25),
+                  Text(
+                    'Bienvenido',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: sclH(context) * 3,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'puede ingresar con: ',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: sclH(context) * 2,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
             ),
             Obx(
@@ -177,43 +179,43 @@ class _LoginPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              padding: EdgeInsets.symmetric(horizontal: sclW(context) * 20),
               child: Column(
                 children: [
-                  const SizedBox(height: 8),
+                  SizedBox(height: sclH(context) * 2),
                   _LoginButton(
                     text: 'Ingresar con Email',
                     imagePath: 'assets/icon/icon_email.png',
                     color: const Color(0xFFFFDF40),
-                    textColor: Color.fromARGB(255, 85, 85, 85),
+                    textColor: const Color.fromARGB(255, 85, 85, 85),
                     onTap: () => Get.offNamed(RouteNames.signIn),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: sclH(context) * 1),
                   _LoginButton(
                     text: 'Ingresar con Google',
                     imagePath: 'assets/icon/icon_google.png',
                     color: Colors.white,
-                    textColor: Color.fromARGB(255, 122, 122, 122),
+                    textColor: const Color.fromARGB(255, 122, 122, 122),
                     onTap: () =>
                         googleSignInController.signInGoogleController(),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: sclH(context) * 1),
                   _LoginButton(
                     text: 'Ingresar con Facebook',
                     imagePath: 'assets/icon/icon_facebook.png',
                     color: Colors.blueAccent,
                     onTap: () => {},
                   ),
-                  const SizedBox(height: 20),
-                  const Text(
+                  SizedBox(height: sclH(context) * 2),
+                  Text(
                     ' o registrese aqui: ',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20.0),
+                    style: TextStyle(fontSize: sclH(context) * 2),
                   ),
                   Container(
                       margin: const EdgeInsets.only(top: 20.0),
-                      width: 220.0,
-                      height: 50.0,
+                      width: sclW(context) * 35,
+                      height: sclH(context) * 35 / 7,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15.0),
                           border: Border.all(
@@ -224,11 +226,11 @@ class _LoginPage extends StatelessWidget {
                       child: Center(
                         child: TextButton(
                             onPressed: () => Get.offNamed(RouteNames.register),
-                            child: const Center(
+                            child: Center(
                               child: Text("Crear una cuenta",
                                   style: TextStyle(
                                       fontFamily: "Lato",
-                                      fontSize: 18.0,
+                                      fontSize: sclH(context) * 2,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             )),
@@ -285,16 +287,16 @@ class _LoginButton extends StatelessWidget {
             children: [
               Image.asset(
                 imagePath,
-                width: 24,
-                height: 24,
+                width: sclH(context) * 3,
+                height: sclH(context) * 3,
               ),
-              const SizedBox(width: 10),
+              SizedBox(width: sclW(context) * 2),
               Text(
                 text,
                 style: TextStyle(
                   color: textColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: sclH(context) * 2.5,
                 ),
               )
             ],

@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../app/controllers/google_controller.dart';
 import '../../../data/login_firebase/auth_repositoryAbst.dart';
-import '../../../data/login_firebase/auth_repositoryImp.dart';
 import '../../routes/route_names.dart';
 import '../../widgets/error_snackbar.dart';
 
@@ -28,7 +26,7 @@ class IntroScreenController extends GetxController {
 
       await _authRepository.signInGoogle();
 
-      Get.showSnackbar(ErrorSnackbar("FF"));
+      Get.showSnackbar(const ErrorSnackbar("FF"));
       Get.offNamed(RouteNames.home);
 
       /*DATA USER EN BASE DE DATOS
@@ -56,7 +54,7 @@ class IntroScreenController extends GetxController {
     } on FirebaseException catch (e) {
       Get.showSnackbar(ErrorSnackbar(e.message ?? e.code));
     } catch (error) {
-      Get.showSnackbar(ErrorSnackbar("error"));
+      Get.showSnackbar(const ErrorSnackbar("error"));
     } finally {}
 
     /*
